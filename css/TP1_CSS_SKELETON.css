@@ -13,7 +13,7 @@ div.Bar {
   background-color: #452604;
   text-align: left;
   width: 100%;
-  z-index: 500;
+  z-index: 2;
 }
 
 div.Bar button {
@@ -103,29 +103,18 @@ div.ImageSlide{
   z-index: 0;
 }
 
+#leftButton img, #rightButton img {
+  border: transparent;
+  padding-top: 2%;
+  position: absolute;
+}
 #leftButton{
   float: left;
-  position: static;
-  padding-top: 10%;
 }
-
-#leftButton img {
-  border: transparent;
-}
-
 #rightButton{
   float: right;
-  position: static;
-  padding-top: 10%;
 }
 
-#rightButton img {
- border: transparent;
-}
-
-table img{
-  border: 3px solid black;
-}
 #table{
   display: table;
   width: 1000px;
@@ -254,13 +243,10 @@ div.Introduce{
   border-color: #5c5c5c;
 }
 #IntroduceTitle{
-  /*text-decoration: line-through;*/
   text-align: center;
   font-style: oblique;
   font-family: sans-serif;
   margin: 0;
-  /*font-stretch: ultra-expanded;*/
-  /*font-kerning: auto;*/
   font-size: 60px;
   color: #DF7401;
   text-shadow: 5px 3px #F7BE81;
@@ -310,7 +296,8 @@ div.Gallery {
   border-width: 7px;
   text-align: center;
   font-size: 15px;
-  width: 100px;
+  /*width: 100px;
+  height: 0px;*/
   border-style: outset;
   margin-top: 30px;
   margin-left: auto;
@@ -319,7 +306,7 @@ div.Gallery {
 }
 #titlehead img{
   width: 400px;
-  height: 200px;
+  height: 120px;
 }
 .headname{
   margin: auto;
@@ -348,6 +335,14 @@ div.Gallery {
   margin: 10px;
   z-index: 0;
 }
+.backgroundDeck{
+  position: absolute;
+  float: left;
+  width: 21.45%;
+  height: 300px;
+  margin: 10px;
+  z-index: 0;
+}
 .column {
   float: left;
   width: 33.333333%;
@@ -357,7 +352,6 @@ div.Gallery {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -365,6 +359,7 @@ div.Gallery {
   height: 100%;
   overflow: auto;
   background-color: black;
+  z-index: 2;
 }
 
 /* Modal Content */
@@ -375,7 +370,7 @@ div.modal-content {
   padding: 0;
   width: 800px;
   height: 500px;
-  z-index: -1;
+  z-index: 0;
 }
 img.demo {
   width: 200px;
@@ -460,13 +455,7 @@ div.slides {
   background-size: cover;
   z-index: 1;
 }
-.backgroundDeck{
-  position: absolute;
-  width: 21.45%;
-  height: 300px;
-  margin: 10px;
-  z-index: 0;
-}
+
 /* Main End */
 div.Guestbook{
   margin: auto;
