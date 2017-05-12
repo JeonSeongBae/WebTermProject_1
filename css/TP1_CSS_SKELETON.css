@@ -388,14 +388,14 @@ img.demo {
 }
 .deckname{
   text-align: center;
-  font-size: 30px;
-  max-width: 200px;
+  font-size: 25px;
+  font-style: italic;
+  font-family: fantasy;
+  width: 350px;
   position: absolute;
-  margin-top: 140px;
-  margin-left: 130px;
-  margin-right: auto;
-  margin-bottom: auto;
   background-color: none;
+  margin: 0;
+  padding: 20px;
   z-index: 0;
 }
 
