@@ -43,6 +43,36 @@ function showSlides(n) {
 		timer = null; // 타이머를 초기화
 		timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
 	}
+
+  var ctx = document.getElementById("chart");
+  var chart = new Chart(ctx, {
+    type: 'pie',
+      data: {
+          labels: ["Warrior", "Paladin", "Hunter", "Rogue", "Mage", "Priest", "Druid", "Shaman", "Warlock"],
+          datasets: [{
+              label: '(단위: %)',
+              data: [18.2, 17, 13.5, 13.3, 11.8, 9.7, 9.5, 5.4, 1.1],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+          }]
+      },
+      options: {
+          responsive: true,
+          responsiveAnimationDuration: 1,
+          title: {
+              display: true,
+              text: '영웅 별 Deck 편성률'
+          }
+      }
+  });
+
+
 function openModal() {
   document.getElementById('myModal').style.display = "block";
 }
