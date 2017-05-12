@@ -69,24 +69,28 @@ function show(n) {
 }
 
 function galleryover(elem){
-  elem.style.opacity = "0.3";
+  elem.style.opacity = "0.5";
   var hero = document.getElementsByClassName("hero");
-  var backgroundDeck = document.getElementsByClassName("backgroundDeck");
-  var gallerydeckname = document.getElementsByClassName("deckname");
-  for (var i = 0; i < shadow.length; i++) {
-    if (elem==shadow[i]) {
-      gallerydeckname[i].style = "z-index: 1"
-      backgroundDeck[i].style = "z-index: 1;"
-      hero[i].style = "z-index: 0;"
+  // var backgroundDeck = document.getElementsByClassName("backgroundDeck");
+  var deckname = document.getElementsByClassName("deckname");
+  for (var i = 0; i < hero.length; i++) {
+    if (elem==hero[i]) {
+      deckname[i].style = "z-index: 1;"
+      // backgroundDeck[i].style = "z-index: 1;"
     }
   }
 }
 function galleryout(elements){
   elements.style.opacity = "1";
-  // var gallerydeckname = document.getElementsByClassName("deckname");
-  // for (var i = 0; i < gallerydeckname.length; i++) {
-  //   gallerydeckname[i].style = "z-index: 1;"
-  // }
+  var hero = document.getElementsByClassName("hero");
+  // var backgroundDeck = document.getElementsByClassName("backgroundDeck");
+  var deckname = document.getElementsByClassName("deckname");
+  for (var i = 0; i < deckname.length; i++) {
+    if (elements==hero[i]) {
+      // backgroundDeck[i].style = "z-index: 0;"
+      deckname[i].style = "z-index: 0;"
+    }
+  }
 }
 
 function deleteGallery(id) {
@@ -96,27 +100,41 @@ function deleteGallery(id) {
 }
 
 function dropdown() {
-    var text = document.getElementById("menu_button").innerHTML;
+  var text = document.getElementById("menu_button").innerHTML;
+  var div = document.getElementById("myDropdown");
+  var pos = div.offsetHeight;
 
-    if (text == "MENU") {
-      var div = document.getElementById("menu_div");
-      var pos = div.offsetHeight;
-      var animation = setInterval(frame, 1);
-      function frame() {
-        if (pos == 280) {
-          clearInterval(animation);
-        } else {
-          pos++;
-          div.style.height = pos + "px";
-        }
+  if (text == "MENU") {
+    var animation = setInterval(expand, 1);
+    function expand() {
+      if (pos > 240) {
+        clearInterval(animation);
+      } else {
+        pos += 2;
+        div.style.height = pos + "px";
       }
-      document.getElementById("menu_button").innerHTML = "CLOSE";
-      document.getElementById("myDropdown").classList.toggle("show");
-    } else {
-      document.getElementById("menu_div").style.height = "50px";
-      document.getElementById("menu_button").innerHTML = "MENU";
-      document.getElementById("myDropdown").classList.toggle("show");
     }
+
+
+    document.getElementById("menu_button").innerHTML = "CLOSE";
+    document.getElementById("myDropdown").classList.toggle("show");
+
+  } else {
+    var animation = setInterval(collapse, 1);
+    function collapse() {
+      if (pos < 0) {
+        clearInterval(animation);
+        document.getElementById("myDropdown").classList.toggle("show");
+
+      } else {
+        pos -= 2;
+        div.style.height = pos + "px";
+      }
+    }
+
+    document.getElementById("menu_button").innerHTML = "MENU";
+
+  }
 }
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {

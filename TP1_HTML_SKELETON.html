@@ -30,15 +30,15 @@
 					<button class="Menu">GUEST BOOK</button>
 				</a>
 				<div class="dropdown">
-				<button class = "Menu" id="menu_button" onclick="dropdown()" >MENU</button>
-					<div id="myDropdown" class="dropdown-content">
-						<a class = "Menu" href="#Home" onclick="dropdown()">HOME</a>
-						<a class = "Menu" href="#ImageSlide" onclick="dropdown()">IMAGE SLIDE</a>
-						<a class = "Menu" href="#Introduce" onclick="dropdown()">INTRODUCE</a>
-						<a class = "Menu" href="#Gallery" onclick="dropdown()">GALLERY</a>
-						<a class = "Menu" href="#Guestbook" onclick="dropdown()">GUEST BOOK</a>
-					</div>
-				</div>
+	        <button id="menu_button" onclick="dropdown()" class="dropbtn">MENU</button>
+	        <div id="myDropdown" class="dropdown-content">
+	          <a href="#">HOME</a>
+	          <a href="#Background">IMAGE SLIDE</a>
+	          <a href="#Introduce">INTRODUCE</a>
+	          <a href="#Gallery">GALLERY</a>
+	          <a href="#Guestbook">GUEST BOOK</a>
+	        </div>
+	      </div>
 			</div>
 	</header>
 	<main>
@@ -125,63 +125,63 @@
 				</td>
 			</table>
 			<div class="row">
-				<!-- <div id="firstrow"> -->
-					<div id="gallery1" class="column">
-						<h3 class="deckname">Warlock</h3>
-						<button class = "xbutton" id = "xbutton1" onclick="deleteGallery(this.id)"></button>
-						<img class="backgroundDeck" src="./img/굴단_덱.jpg"/>
-						<img class="hero" src="./img/굴단.jpg" onclick="openModal();current(1)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-					</div>
-					<div id="gallery2" class="column">
-						<h3 class="deckname">Druid</h3>
-						<button class = "xbutton" id = "xbutton2"	 onclick="deleteGallery(this.id)"></button>
-						<img class="backgroundDeck" src="./img/말퓨리온_덱.jpg"/>
-						<img class="hero" src="./img/말퓨리온.jpg" onclick="openModal();current(2)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-					</div>
-					<div id="gallery3" class="column">
-						<h3 class="deckname">Hunter</h3>
-						<button class = "xbutton" id = "xbutton3" onclick="deleteGallery(this.id)"></button>
-						<img class="backgroundDeck" src="./img/렉사르_덱.jpg"/>
-						<img class="hero" src="./img/렉사르.jpg" onclick="openModal();current(3)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-					</div>
-				<div id="gallery4" class="column">
-					<h3 class="deckname">Rogue</h3>
-					<button class = "xbutton" id = "xbutton4" onclick="deleteGallery(this.id)"></button>
-					<img class="backgroundDeck" src="./img/발리라_덱.jpg"/>
-					<img class="hero" src="./img/발리라.jpg" onclick="openModal();current(4)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-				</div>
-				<div id="gallery5" class="column">
-					<h3 class="deckname">Shaman</h3>
-					<button class = "xbutton" id = "xbutton5" onclick="deleteGallery(this.id)"></button>
-					<img class="backgroundDeck" src="./img/스랄_덱.jpg"/>
-					<img class="hero" src="./img/스랄.jpg" onclick="openModal();current(5)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-				</div>
-				<div id="gallery6" class="column">
-					<h3 class="deckname">Priest</h3>
-					<button class = "xbutton" id = "xbutton6" onclick="deleteGallery(this.id)"></button>
-					<img class="backgroundDeck" src="./img/안두인_덱.jpg"/>
-					<img class="hero" src="./img/안두인.jpg" onclick="openModal();current(6)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-				</div>
-				<div id="gallery7" class="column">
-					<h3 class="deckname">Paladin</h3>
-					<button class = "xbutton" id = "xbutton7" onclick="deleteGallery(this.id)"></button>
-					<img class="backgroundDeck" src="./img/우서_덱.jpg"/>
-					<img class="hero" src="./img/우서.jpg" onclick="openModal();current(7)"onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-				</div>
-				<div id="gallery8" class="column">
-					<h3 class="deckname">Mage</h3>
-					<button class = "xbutton" id = "xbutton8" onclick="deleteGallery(this.id)"></button>
-					<img class="backgroundDeck" src="./img/제이나_덱.jpg"/>
-					<img class="hero" src="./img/제이나.jpg" onclick="openModal();current(8)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-				</div>
-				<div id="gallery9" class="column">
-					<h3 class="deckname">Warrior</h3>
-					<button class = "xbutton" id = "xbutton9" onclick="deleteGallery(this.id)"></button>
-					<img class="backgroundDeck" src="./img/헬스크림_덱.jpg"/>
-					<img class="hero" src="./img/헬스크림.jpg" onclick="openModal();current(9)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-				</div>
-				<!-- </div> -->
-			</div>
+	<!-- <div id="firstrow"> -->
+		<div id="gallery1" class="column">
+			<h3 class="deckname">Warlock</h3>
+			<button class = "xbutton" id = "xbutton1" onclick="deleteGallery(this.id)"></button>
+			<img class="backgroundDeck" src="./img/굴단_덱.jpg"/>
+			<img class="hero" src="./img/굴단.jpg" onclick="openModal();current(1)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+		</div>
+		<div id="gallery2" class="column">
+			<h3 class="deckname">Druid</h3>
+			<button class = "xbutton" id = "xbutton2"	 onclick="deleteGallery(this.id)"></button>
+			<img class="backgroundDeck" src="./img/말퓨리온_덱.jpg"/>
+			<img class="hero" src="./img/말퓨리온.jpg" onclick="openModal();current(2)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+		</div>
+		<div id="gallery3" class="column">
+			<h3 class="deckname">Hunter</h3>
+			<button class = "xbutton" id = "xbutton3" onclick="deleteGallery(this.id)"></button>
+			<img class="backgroundDeck" src="./img/렉사르_덱.jpg"/>
+			<img class="hero" src="./img/렉사르.jpg" onclick="openModal();current(3)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+		</div>
+	<div id="gallery4" class="column">
+		<h3 class="deckname">Rogue</h3>
+		<button class = "xbutton" id = "xbutton4" onclick="deleteGallery(this.id)"></button>
+		<img class="backgroundDeck" src="./img/발리라_덱.jpg"/>
+		<img class="hero" src="./img/발리라.jpg" onclick="openModal();current(4)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+	</div>
+	<div id="gallery5" class="column">
+		<h3 class="deckname">Shaman</h3>
+		<button class = "xbutton" id = "xbutton5" onclick="deleteGallery(this.id)"></button>
+		<img class="backgroundDeck" src="./img/스랄_덱.jpg"/>
+		<img class="hero" src="./img/스랄.jpg" onclick="openModal();current(5)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+	</div>
+	<div id="gallery6" class="column">
+		<h3 class="deckname">Priest</h3>
+		<button class = "xbutton" id = "xbutton6" onclick="deleteGallery(this.id)"></button>
+		<img class="backgroundDeck" src="./img/안두인_덱.jpg"/>
+		<img class="hero" src="./img/안두인.jpg" onclick="openModal();current(6)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+	</div>
+	<div id="gallery7" class="column">
+		<h3 class="deckname">Paladin</h3>
+		<button class = "xbutton" id = "xbutton7" onclick="deleteGallery(this.id)"></button>
+		<img class="backgroundDeck" src="./img/우서_덱.jpg"/>
+		<img class="hero" src="./img/우서.jpg" onclick="openModal();current(7)"onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+	</div>
+	<div id="gallery8" class="column">
+		<h3 class="deckname">Mage</h3>
+		<button class = "xbutton" id = "xbutton8" onclick="deleteGallery(this.id)"></button>
+		<img class="backgroundDeck" src="./img/제이나_덱.jpg"/>
+		<img class="hero" src="./img/제이나.jpg" onclick="openModal();current(8)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+	</div>
+	<div id="gallery9" class="column">
+		<h3 class="deckname">Warrior</h3>
+		<button class = "xbutton" id = "xbutton9" onclick="deleteGallery(this.id)"></button>
+		<img class="backgroundDeck" src="./img/헬스크림_덱.jpg"/>
+		<img class="hero" src="./img/헬스크림.jpg" onclick="openModal();current(9)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+	</div>
+	<!-- </div> -->
+</div>
 	<div id="myModal" class="modal" >
 		<div class="modal-content" onclick="closeModal()">
 			<div id="slide1" class="slides">

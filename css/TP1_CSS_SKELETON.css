@@ -6,15 +6,14 @@ body{
 }
 
 div.Bar {
+  overflow-y: visible;
   position: fixed;
   top: 5px;
-  overflow: hidden;
   border: 1px solid #ccc;
   background-color: #452604;
   text-align: left;
   width: 100%;
-  height: 50px;
-  z-index: 1;
+  z-index: 500;
 }
 
 div.Bar button {
@@ -32,17 +31,14 @@ div.Bar button {
   margin-right: 0px;
 }
 
-#menu_button{
-  width: 230px;
-}
 
 div.Bar button:hover, div.Bar button:focus {
   background-color: #222222;
 }
 
 .dropbtn {
-    background-color: white;
-    color: white;
+    background-color: inherit;
+    color: black;
     padding: 16px;
     font-size: 17px;
     border: none;
@@ -50,46 +46,35 @@ div.Bar button:hover, div.Bar button:focus {
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #222222;
+
 }
 
 .dropdown {
-    position: relative;
+    position: absolute;
     display: inline-block;
-    z-index: 2;
-}
-
-div#myDropdown{
-  margin-top: 0;
-  z-index: 1;
+    width: 100%;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    margin-top: 50px;
-    background-color: inherit;
+    background-color: #123456;
     min-width: 160px;
-    overflow: auto;
-    z-index: 1;
+    overflow: hidden;
+    z-index: 1000;
+    width: 100%;
 }
 
 .dropdown-content a {
-    color: Gray;
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    font-size: 20px;
-    font-style: normal;
-    font-family: fantasy;
 }
 
 .dropdown a:hover {background-color: #222222}
 
-.show {
-  display: block;
-}
-
+.show {display:block;}
 /* Menu bar End */
 
 
@@ -113,7 +98,7 @@ div.ImageSlide{
   background-image: url("../img/메인2.jpg");
   background-size: cover;
   background-position: center;
-  position: static;
+  position: relative;
   background-color : #F3E2A9;
 	outline : none;
 	width : 100%;
@@ -139,127 +124,6 @@ div.ImageSlide{
 
 #rightButton img {
  border: transparent;
-}
-
-div.Gallery {
-	background-color : #F3E2A9;
-	outline : none;
-	width : 100%;
-	height : 100%;
-  background-image: url("../img/배경.jpg");
-  background-size: cover;
-  background-position: center;
-}
-#titlehead{
-  color: #C6B713;
-  background-color: #452604;
-  border-color: #989187;
-  border-radius: 20px;
-  border-width: 7px;
-  text-align: center;
-  font-size: 15px;
-  width: 100px;
-  border-style: outset;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0px;
-}
-#titlehead img{
-  width: 400px;
-  height: 200px;
-}
-.headname{
-  margin: auto;
-  text-transform: uppercase;
-}
-.row > .column {
-  padding: 0px;
-}
-.row{
-  width: 1030px;
-  height: auto;
-  margin: auto;
-  padding: 0;
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-  text-align: center;
-}
-.hero{
-  position: relative;
-  float: left;
-  width: 95%;
-  height: 300px;
-  margin: 10px;
-  z-index: 0;
-}
-.column {
-  float: left;
-  width: 33.333333%;
-  height: 33.33333%;
-}
-.xbutton{
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  margin: 10px;
-  cursor: pointer;
-  background-image: url("../img/modal_button/x.png");
-  background-size: cover;
-  z-index: 1;
-}
-.backgroundDeck{
-  position: absolute;
-  width: 21.45%;
-  height: 300px;
-  margin: 10px;
-  z-index: 0;
-}
-/* The Modal (background) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: black;
-}
-
-/* Modal Content */
-div.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 800px;
-  height: 500px;
-  z-index: -1;
-}
-img.demo {
-  width: 200px;
-  height: 300px;
-  margin: 10px;
-  opacity: 0.6;
-}
-.deckname{
-  text-align: center;
-  font-size: 30px;
-  max-width: 200px;
-  position: absolute;
-  margin-top: 140px;
-  margin-left: 130px;
-  margin-right: auto;
-  margin-bottom: auto;
-  background-color: none;
-  color: gray;
-  z-index: 0;
 }
 
 table img{
@@ -432,6 +296,109 @@ text-align: center;
   height: 300px;
 }
 
+div.Gallery {
+	background-color : #F3E2A9;
+	outline : none;
+	width : 100%;
+	height : 100%;
+  background-image: url("../img/배경.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#titlehead{
+  color: #C6B713;
+  background-color: #452604;
+  border-color: #989187;
+  border-radius: 20px;
+  border-width: 7px;
+  text-align: center;
+  font-size: 15px;
+  width: 100px;
+  border-style: outset;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+#titlehead img{
+  width: 400px;
+  height: 200px;
+}
+.headname{
+  margin: auto;
+  text-transform: uppercase;
+}
+.row > .column {
+  padding: 0px;
+}
+.row{
+  width: 1030px;
+  height: auto;
+  margin: auto;
+  padding: 0;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  text-align: center;
+}
+.hero{
+  position: relative;
+  float: left;
+  width: 95%;
+  height: 300px;
+  margin: 10px;
+  z-index: 0;
+}
+.column {
+  float: left;
+  width: 33.333333%;
+  height: 33.33333%;
+}
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+div.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 800px;
+  height: 500px;
+  z-index: -1;
+}
+img.demo {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  opacity: 0.6;
+}
+.deckname{
+  text-align: center;
+  font-size: 30px;
+  max-width: 200px;
+  position: absolute;
+  margin-top: 140px;
+  margin-left: 130px;
+  margin-right: auto;
+  margin-bottom: auto;
+  background-color: none;
+  z-index: 0;
+}
+
 img.slidesimg{
   /*padding-top: 50px;*/
   width: 100%;
@@ -486,7 +453,23 @@ div.slides {
 .mactive, .demo:hover {
   opacity: 1;
 }
-
+.xbutton{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  cursor: pointer;
+  background-image: url("../img/modal_button/x.png");
+  background-size: cover;
+  z-index: 1;
+}
+.backgroundDeck{
+  position: absolute;
+  width: 21.45%;
+  height: 300px;
+  margin: 10px;
+  z-index: 0;
+}
 /* Main End */
 div.Guestbook{
   margin: auto;
