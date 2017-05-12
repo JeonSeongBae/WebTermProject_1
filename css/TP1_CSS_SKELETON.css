@@ -188,17 +188,35 @@ div.Gallery {
   clear: both;
   text-align: center;
 }
-div.row img{
+.hero{
+  position: relative;
   float: left;
   width: 95%;
   height: 300px;
   margin: 10px;
-
+  z-index: 0;
 }
 .column {
   float: left;
   width: 33.333333%;
   height: 33.33333%;
+}
+.xbutton{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  cursor: pointer;
+  background-image: url("../img/modal_button/x.png");
+  background-size: cover;
+  z-index: 1;
+}
+.backgroundDeck{
+  position: absolute;
+  width: 21.45%;
+  height: 300px;
+  margin: 10px;
+  z-index: 0;
 }
 /* The Modal (background) */
 .modal {
@@ -467,16 +485,7 @@ div.slides {
 .mactive, .demo:hover {
   opacity: 1;
 }
-.xbutton{
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  margin: 10px;
-  cursor: pointer;
-  background-image: url("../img/modal_button/x.png");
-  background-size: cover;
-  z-index: 1;
-}
+
 /* Main End */
 div.Guestbook{
   margin: auto;

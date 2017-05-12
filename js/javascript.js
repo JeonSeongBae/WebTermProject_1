@@ -71,10 +71,10 @@ function show(n) {
 function galleryover(elem){
   elem.style.opacity = "0.5";
   var shadow = document.getElementsByClassName("hover-shadow");
-  var deckname = document.getElementsByClassName("deckname");
+  var backgroundDeck = document.getElementsByClassName("backgroundDeck");
   for (var i = 0; i < shadow.length; i++) {
     if (elem==shadow[i]) {
-      deckname[i].style = "z-index: 1;"
+      backgroundDeck[i].style = "z-index: 1;"
     }
   }
 }
