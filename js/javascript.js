@@ -7,19 +7,19 @@ function currentSlide(n) {
   showSlides(slideIndex = n); // 지정된 화면을 띄우기
 }
 function carousel(btnYN){
-	var i;
-	var x = document.getElementsByClassName("mySlides");
+   var i;
+   var x = document.getElementsByClassName("mySlides");
   var y = document.getElementsByClassName("dot");
 
-	for(i=0; i<x.length;i++){
-		x[i].style.display = "none"; // 나머지 화면을 none으로
+   for(i=0; i<x.length;i++){
+      x[i].style.display = "none"; // 나머지 화면을 none으로
     y[i].className = y[i].className.replace(" active", "");
-	}
-	if(btnYN != "Y")
-		slideIndex++;
-	if(slideIndex > x.length)
-		slideIndex = 1;
-	x[slideIndex-1].style.display = "block";
+   }
+   if(btnYN != "Y")
+      slideIndex++;
+   if(slideIndex > x.length)
+      slideIndex = 1;
+   x[slideIndex-1].style.display = "block";
   y[slideIndex-1].className += " active"
 }
 function showSlides(n) {
@@ -35,14 +35,14 @@ function showSlides(n) {
   }
   imgslides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-	setTimer();
-	carousel("Y");
-	}
-	function setTimer(){
-		clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
-		timer = null; // 타이머를 초기화
-		timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
-	}
+   setTimer();
+   carousel("Y");
+   }
+   function setTimer(){
+      clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
+      timer = null; // 타이머를 초기화
+      timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
+   }
 
   var ctx = document.getElementById("chart");
   var chart = new Chart(ctx, {
@@ -75,26 +75,42 @@ function showSlides(n) {
 
 function openModal() {
   document.getElementById('myModal').style.display = "block";
+  // document.getElementById('myModal').style = "position : relative"
+  document.getElementsByClassName('mprev')[0].style = "z-index:0; position:absolute";
+  document.getElementsByClassName('mnext')[0].style = "z-index:0; position:absolute";
 }
 function closeModal() {
   document.getElementById('myModal').style.display = "none";
 }
 var index = 1;
-function plus(n) {
-  show(index += n);
+function plus() {
+  show(++index, 1);
+}
+function minus(){
+  show(--index, 2);
 }
 function current(n) {
-  show(index = n);
+  show(index = n, 0);
 }
-function show(n) {
+var slides = document.getElementsByClassName("slides");
+function show(n, pm) {
   var i;
-  var slides = document.getElementsByClassName("slides");
-  if (n > slides.length) {index = 1}
-  if (n < 1) {index = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  if(localStorage.getItem("xbutton"+n) !== null){
+      if(pm === 1){
+        plus();
+      }
+      else{
+        minus();
+      }
   }
-  slides[index-1].style.display = "block";
+  else{
+    if (n > slides.length) {index = 1}
+    if (n < 1) {index = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[index-1].style.display = "block";
+  }
 }
 
 function galleryover(elem){
@@ -117,23 +133,23 @@ function galleryout(elements){
     }
   }
 }
+
 function deleteGallery(id) {
-  var deleteindex = id.split("n");
-  var gallery = document.getElementById("gallery" + deleteindex[1]).remove();
+  var index_delete = id.split("n");
+  document.getElementById("gallery" + index_delete[1]).remove();
   // var slides = document.getElementsByClassName("slides")[index[1]].remove();
-  var deleteslides = document.getElementsById("slide" + deleteindex[1]).remove();
-  // deleteslides[(deleteindex-1)].remove();
-  // localStorage.setItem(id, id);
+  // slides[index_delete[1]].remove();
+  localStorage.setItem(id, id);
 }
 
-// function update_storage(){
-//   for(var i = 1; i < 10 ; i++){
-//     if(localStorage.getItem("xbutton"+i) !== null){
-//       deleteGallery("xbutton"+i);
-//     }
-//   }
-// }
-// update_storage();
+function update_storage(){
+  for(var i = 1; i < 10 ; i++){
+    if(localStorage.getItem("xbutton"+i) !== null){
+      deleteGallery("xbutton"+i);
+    }
+  }
+}
+update_storage();
 
 function dropdown() {
   var text = document.getElementById("menu_button").innerHTML;
@@ -187,45 +203,45 @@ window.onclick = function(event) {
   }
 }
 function post() {
-	var name = document.getElementById("input_name").value;
-	var text = document.getElementById("input_text").value;
+   var name = document.getElementById("input_name").value;
+   var text = document.getElementById("input_text").value;
 
-	var div = document.getElementById("comment_div");
+   var div = document.getElementById("comment_div");
 
-	var table = document.createElement("table");
-	var tr1 = document.createElement("tr");
-	var tr2 = document.createElement("tr");
+   var table = document.createElement("table");
+   var tr1 = document.createElement("tr");
+   var tr2 = document.createElement("tr");
 
-	var td_name = document.createElement("td");
-	td_name.innerHTML = "작성자 : " + name;
+   var td_name = document.createElement("td");
+   td_name.innerHTML = "작성자 : " + name;
 
-	var td_text = document.createElement("td");
-	td_text.innerHTML = text;
+   var td_text = document.createElement("td");
+   td_text.innerHTML = text;
 
-	var td_button = document.createElement("td");
-	td_button.setAttribute("id", "comment_td");
+   var td_button = document.createElement("td");
+   td_button.setAttribute("id", "comment_td");
 
-	var comment_button = document.createElement("button");
-	comment_button.setAttribute("onclick", "comment_post()");
-	comment_button.innerHTML = "댓글 등록하기";
-	td_button.appendChild(comment_button);
+   var comment_button = document.createElement("button");
+   comment_button.setAttribute("onclick", "comment_post()");
+   comment_button.innerHTML = "댓글 등록하기";
+   td_button.appendChild(comment_button);
 
-	tr1.appendChild(td_name);
-	tr1.appendChild(td_text);
-	tr2.appendChild(td_button);
+   tr1.appendChild(td_name);
+   tr1.appendChild(td_text);
+   tr2.appendChild(td_button);
 
-	table.appendChild(tr1);
-	table.appendChild(tr2);
+   table.appendChild(tr1);
+   table.appendChild(tr2);
 
-	div.appendChild(table);
+   div.appendChild(table);
 }
 
 function comment_post() {
-	var text = prompt("댓글을 등록해 주세요");
+   var text = prompt("댓글을 등록해 주세요");
 
-	if (text != null) {
-		document.getElementById("comment_td").innerHTML = text;
-	}
+   if (text != null) {
+      document.getElementById("comment_td").innerHTML = text;
+   }
 }
 var guest_index = 0;
 function add_guestbook(){
