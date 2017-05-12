@@ -24,16 +24,16 @@ function carousel(btnYN){
 }
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
+  var imgslides = document.getElementsByClassName("mySlides");
 
   var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+  if (n > imgslides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = imgslides.length}
+  for (i = 0; i < imgslides.length; i++) {
+      imgslides[i].style.display = "none";
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
+  imgslides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 	setTimer();
 	carousel("Y");
@@ -89,7 +89,6 @@ function current(n) {
 function show(n) {
   var i;
   var slides = document.getElementsByClassName("slides");
-  var captionText = document.getElementById("caption");
   if (n > slides.length) {index = 1}
   if (n < 1) {index = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -101,33 +100,40 @@ function show(n) {
 function galleryover(elem){
   elem.style.opacity = "0.5";
   var hero = document.getElementsByClassName("hero");
-  // var backgroundDeck = document.getElementsByClassName("backgroundDeck");
   var deckname = document.getElementsByClassName("deckname");
   for (var i = 0; i < hero.length; i++) {
     if (elem==hero[i]) {
       deckname[i].style = "z-index: 1;"
-      // backgroundDeck[i].style = "z-index: 1;"
     }
   }
 }
 function galleryout(elements){
   elements.style.opacity = "1";
   var hero = document.getElementsByClassName("hero");
-  // var backgroundDeck = document.getElementsByClassName("backgroundDeck");
   var deckname = document.getElementsByClassName("deckname");
   for (var i = 0; i < deckname.length; i++) {
     if (elements==hero[i]) {
-      // backgroundDeck[i].style = "z-index: 0;"
       deckname[i].style = "z-index: 0;"
     }
   }
 }
-
 function deleteGallery(id) {
-  var index = id.split("n");
-  var gallery = document.getElementById("gallery" + index[1]).remove();
-  slides[index[1]].remove();
+  var deleteindex = id.split("n");
+  var gallery = document.getElementById("gallery" + deleteindex[1]).remove();
+  // var slides = document.getElementsByClassName("slides")[index[1]].remove();
+  var deleteslides = document.getElementsById("slide" + deleteindex[1]).remove();
+  // deleteslides[(deleteindex-1)].remove();
+  // localStorage.setItem(id, id);
 }
+
+// function update_storage(){
+//   for(var i = 1; i < 10 ; i++){
+//     if(localStorage.getItem("xbutton"+i) !== null){
+//       deleteGallery("xbutton"+i);
+//     }
+//   }
+// }
+// update_storage();
 
 function dropdown() {
   var text = document.getElementById("menu_button").innerHTML;

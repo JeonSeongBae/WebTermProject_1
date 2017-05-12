@@ -92,8 +92,8 @@ div.Bar button:hover, div.Bar button:focus {
 
 div.ImageSlide{
   margin-top: 60px;
-  background-image: url("../img/메인2.jpg");
-  background-size: cover;
+  background-image: url("../img/메인.jpg");
+  background-size:100% 100%;
   background-position: center;
   position: relative;
   background-color : #F3E2A9;
@@ -228,11 +228,17 @@ div.dots{
 }*/
 div.Introduce{
   background-color : #F5D0A9;
+  /*background-image: url("../img/메인3.png");
+  background-size:100% 100%;
+  background-position: center;*/
+  text-align: center;
   outline : none;
   width : 100%;
   height : 100%;
 }
 #introducetable{
+  background-image: url("../img/메인3.png");
+  background-size: 100% 100%;
   width: 100%;
   height: 100%;
   position: static;
@@ -240,8 +246,6 @@ div.Introduce{
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
-
-  /*border-color: #5c5c5c;*/
 }
 #IntroduceTitle{
   text-align: center;
@@ -279,6 +283,18 @@ text-align: center;
   width: 100%;
   height: 300px;
 }
+#chartTable{
+  position: static;
+  /*background-image: url("../img/메인3.png");*/
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  max-height: 650px;
+}
 
 div.Gallery {
 	background-color : #F3E2A9;
@@ -286,7 +302,7 @@ div.Gallery {
 	width : 100%;
 	height : 100%;
   background-image: url("../img/배경.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center;
 }
 #titlehead{
@@ -453,7 +469,7 @@ div.slides {
   margin: 10px;
   cursor: pointer;
   background-image: url("../img/modal_button/x.png");
-  background-size: cover;
+  background-size:100% 100%;
   z-index: 1;
 }
 
