@@ -257,8 +257,9 @@ img.demo {
   margin-left: 130px;
   margin-right: auto;
   margin-bottom: auto;
-  background-color: white;
-  z-index: -3;
+  background-color: none;
+  color: gray;
+  z-index: 0;
 }
 
 table img{

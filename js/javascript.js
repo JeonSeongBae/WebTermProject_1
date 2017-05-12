@@ -69,21 +69,24 @@ function show(n) {
 }
 
 function galleryover(elem){
-  elem.style.opacity = "0.5";
-  var shadow = document.getElementsByClassName("hover-shadow");
+  elem.style.opacity = "0.3";
+  var hero = document.getElementsByClassName("hero");
   var backgroundDeck = document.getElementsByClassName("backgroundDeck");
+  var gallerydeckname = document.getElementsByClassName("deckname");
   for (var i = 0; i < shadow.length; i++) {
     if (elem==shadow[i]) {
+      gallerydeckname[i].style = "z-index: 1"
       backgroundDeck[i].style = "z-index: 1;"
+      hero[i].style = "z-index: 0;"
     }
   }
 }
 function galleryout(elements){
   elements.style.opacity = "1";
-  var gallerydeckname = document.getElementsByClassName("deckname");
-  for (var i = 0; i < gallerydeckname.length; i++) {
-    gallerydeckname[i].style = "z-index: -1;"
-  }
+  // var gallerydeckname = document.getElementsByClassName("deckname");
+  // for (var i = 0; i < gallerydeckname.length; i++) {
+  //   gallerydeckname[i].style = "z-index: 1;"
+  // }
 }
 
 function deleteGallery(id) {
