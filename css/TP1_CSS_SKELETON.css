@@ -1,0 +1,537 @@
+@CHARSET "UTF-8";
+
+/* Menu bar Start */
+body{
+    background-image: url("../img/배경색.jpg");
+}
+
+div.Bar {
+  position: fixed;
+  top: 5px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #452604;
+  text-align: left;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+}
+
+div.Bar button {
+  color: #C6B713;
+  background-color: #452604;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  font-style: normal;
+  cursor: pointer;
+  float: none;
+  width: 16.55%;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#menu_button{
+  width: 230px;
+}
+
+div.Bar button:hover, div.Bar button:focus {
+  background-color: #222222;
+}
+
+.dropbtn {
+    background-color: white;
+    color: white;
+    padding: 16px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #222222;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+div#myDropdown{
+  margin-top: 0;
+  z-index: 1;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top: 50px;
+    background-color: inherit;
+    min-width: 160px;
+    overflow: auto;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: Gray;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    font-style: normal;
+    font-family: fantasy;
+}
+
+.dropdown a:hover {background-color: #222222}
+
+.show {
+  display: block;
+}
+
+/* Menu bar End */
+
+
+
+#prevButton img {
+  float: left;
+  padding-top: 152px;
+}
+
+#nextButton img {
+  float: right;
+  padding-top: 152px;
+}
+
+/* Menu bar End */
+
+/* Main Start */
+
+div.ImageSlide{
+  margin-top: 60px;
+  background-image: url("../img/메인2.jpg");
+  background-size: cover;
+  background-position: center;
+  position: static;
+  background-color : #F3E2A9;
+	outline : none;
+	width : 100%;
+	height : 100%;
+  z-index: 0;
+}
+
+#leftButton{
+  float: left;
+  position: static;
+  padding-top: 10%;
+}
+
+#leftButton img {
+  border: transparent;
+}
+
+#rightButton{
+  float: right;
+  position: static;
+  padding-top: 10%;
+}
+
+#rightButton img {
+ border: transparent;
+}
+
+div.Gallery {
+	background-color : #F3E2A9;
+	outline : none;
+	width : 100%;
+	height : 100%;
+  background-image: url("../img/배경.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#titlehead{
+  color: #C6B713;
+  background-color: #452604;
+  border-color: #989187;
+  border-radius: 20px;
+  border-width: 7px;
+  text-align: center;
+  font-size: 15px;
+  width: 100px;
+  border-style: outset;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+#titlehead img{
+  width: 400px;
+  height: 200px;
+}
+.headname{
+  margin: auto;
+  text-transform: uppercase;
+}
+.row > .column {
+  padding: 0px;
+}
+.row{
+  width: 1030px;
+  height: auto;
+  margin: auto;
+  padding: 0;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  text-align: center;
+}
+div.row img{
+  float: left;
+  width: 95%;
+  height: 300px;
+  margin: 10px;
+
+}
+.column {
+  float: left;
+  width: 33.333333%;
+  height: 33.33333%;
+}
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+div.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 800px;
+  height: 500px;
+  z-index: -1;
+}
+img.demo {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  opacity: 0.6;
+}
+.deckname{
+  text-align: center;
+  font-size: 30px;
+  max-width: 200px;
+  position: absolute;
+  margin-top: 140px;
+  margin-left: 130px;
+  margin-right: auto;
+  margin-bottom: auto;
+  background-color: white;
+  z-index: -3;
+}
+
+table img{
+  border: 3px solid black;
+}
+#table{
+  display: table;
+  width: 1000px;
+  height: 384px;
+}
+* {box-sizing:border-box}
+
+.foothyperlink{text-align: center; padding: 0 10px;}
+
+a.hyperlink{
+  padding: 20px;
+  text-decoration: none;
+}
+a.hyperlink:hover{text-decoration: underline;}
+
+
+a#naver{color: green;}
+
+a#google{color: blue;}
+
+a#daum{color: pink;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  height: 90%;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides{
+    /*padding-top: 70px;*/
+    max-width: auto;
+    height: auto;
+    position: static;
+}
+.mySlides img{
+  height: 500px;
+  width: 1000px;
+  position: relative;
+  border: none;
+  margin: in;
+  padding: inherit;
+}
+
+/* Next & previous buttons */
+  #prev, #next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  }
+#next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+#prev:hover, #next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+/* The dots/bullets/indicators */
+div.dots{
+  /*position: absolute;*/
+  height: 10%;
+  text-align: center;
+  z-index: 0;
+  float: none;
+  position: relative;
+  /*margin-top: 200px;*/
+}
+.dot {
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  /*background-color: #bbb;*/
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  position: static;
+}
+.active, .dot:hover {
+  /*background-color: #717171;*/
+  background-color: black;
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+div.Introduce{
+  background-color : #F5D0A9;
+  outline : none;
+  width : 100%;
+  height : 100%;
+}
+#introducetable{
+  width: 100%;
+  height: 100%;
+  position: static;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  border-color: #5c5c5c;
+}
+#IntroduceTitle{
+  /*text-decoration: line-through;*/
+  text-align: center;
+  font-style: oblique;
+  font-family: sans-serif;
+  margin: 0;
+  /*font-stretch: ultra-expanded;*/
+  /*font-kerning: auto;*/
+  font-size: 60px;
+  color: #DF7401;
+  text-shadow: 5px 3px #F7BE81;
+}
+#font{
+  font-family: fantasy;
+  font-size: 40px;
+  color: #FF8000;
+  text-shadow: 3px 2px #F7BE81;
+  margin: 0;
+}
+#color{
+  color: blue;
+}
+#size{
+  font-size: 20px;
+  margin: 0;
+  }
+#introducement{
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
+}
+.IntroduceText  {
+text-align: center;
+}
+#IntroduceImg{
+  /*background-image: url("./img/메인.jpg");*/
+  width: 100%;
+  height: 300px;
+}
+
+img.slidesimg{
+  /*padding-top: 50px;*/
+  width: 100%;
+  height: 100%;
+}
+div.slides {
+  /*padding-top: 50px;*/
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #F5ECCE;
+}
+#modalrow{
+  text-align: center;
+}
+/* Next & previous buttons */
+.mprev, .mnext {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+}
+
+/* Position the "next button" to the right */
+.mnext {
+  right: 0;
+  /*border-radius: 3px 0 0 3px;*/
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.mprev:hover,
+.mnext:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.mactive, .demo:hover {
+  opacity: 1;
+}
+.xbutton{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  cursor: pointer;
+  background-image: url("../img/modal_button/x.png");
+  background-size: cover;
+  z-index: 1;
+}
+/* Main End */
+div.Guestbook{
+  margin: auto;
+  background-color : #F5D0A9;
+  outline : none;
+  width : 100%;
+  height : 100%;
+  /*text-align: center;*/
+  /*background-image: url("../img/배경.jpg");*/
+}
+.guesttable{
+  width: 100%;
+  /*height: 100%;*/
+  position: static;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  /*border-color: #5c5c5c;*/
+}
+thead #guesttitle{
+  text-shadow: 3px 2px black;
+  font-size: 60px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: brown;
+}
+#commentwriter{
+  width: 15%;
+}
+#commentcomment{
+  width: 42.5%;
+}
+#commentrecoment{
+  width: 42.5%;
+}
+.comment{
+  margin-left: 39%  ;
+}
+.guestwriter, .guestcomment, .guestrecoment{
+  margin-left: 10px;
+}
+#writer{
+  width: 150px;
+  height: 45px;
+  font-size: 35px;
+}
+#content{
+  width: 95%;
+  height: 90%;
+  font-size: 35px;
+  margin: 0;
+}
+/* Footer Start */
+footer {
+    display: block;
+}
+/* Footer End */
