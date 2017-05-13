@@ -5,100 +5,82 @@
 	<title>TP1 in HTML5 Skeleton</title>
 	<link rel="stylesheet" type="text/css" href="./css/TP1_CSS_SKELETON.css">
 </head>
-<style>
-
-</style>
-<!-- <script src="./js/javascript.js"></script> -->
-	<header>
-		<body onload = "plusSlides(0)">
-			<div id="menu_div" class="Bar">
-				<a href="#Home">
-					<button class="Menu">HOME</button>
-				</a>
-				<a href="#ImageSlide">
-					<button class="Menu">IMAGE SLIDE</button>
-				</a>
-				<a href="#Introduce">
-					<button class="Menu">INTRODUCE</button>
-				</a>
-				<a href="#Gallery">
-					<button class="Menu">GALLERY</button>
-				</a>
-				<a href="#Guestbook">
-					<button class="Menu">GUEST BOOK</button>
-				</a>
-				<div class="dropdown">
-	        <button id="menu_button" onclick="dropdown()" class="dropbtn">MENU</button>
-	        <div id="myDropdown" class="dropdown-content">
-	          <a href="#">HOME</a>
-	          <a href="#ImageSlide">IMAGE SLIDE</a>
-	          <a href="#Introduce">INTRODUCE</a>
-	          <a href="#Gallery">GALLERY</a>
-	          <a href="#Guestbook">GUEST BOOK</a>
-	        </div>
-	      </div>
+<style></style>
+<header>
+	<body onload = "moveSlides(0)">
+		<div id="menu_div" class="Bar">
+			<a href="#Home">
+				<button class="Menu">HOME</button>
+			</a>
+			<a href="#ImageSlide">
+				<button class="Menu">IMAGE SLIDE</button>
+			</a>
+			<a href="#Introduce">
+				<button class="Menu">INTRODUCE</button>
+			</a>
+			<a href="#Gallery">
+				<button class="Menu">GALLERY</button>
+			</a>
+			<a href="#Guestbook">
+				<button class="Menu">GUEST BOOK</button>
+			</a>
+			<div class="dropdown">
+				<button id="menu_button" onclick="dropdown()" class="dropbtn">MENU</button>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="#">HOME</a>
+          <a href="#ImageSlide">IMAGE SLIDE</a>
+          <a href="#Introduce">INTRODUCE</a>
+          <a href="#Gallery">GALLERY</a>
+          <a href="#Guestbook">GUEST BOOK</a>
+        </div>
 			</div>
+		</div>
 	</header>
 	<main>
 		<div class = "ImageSlide" id="ImageSlide">
 			<div class="slideshow-container">
-
-			<div class="mySlides"><img src="./img/메인.jpg">
-				<!-- <div class="text">S</div> -->
-		  </div>
-		  <div class="mySlides"><img src="./img/전설속.png" >
-		    <!-- <div class="text">O</div> -->
-		  </div>
-			<div class="mySlides"><img src="./img/끝없이.PNG" >
-				<!-- <div class="text">N</div> -->
-			</div>
-			<div class="mySlides"><img src="./img/승리의.PNG" >
-				<!-- <div class="text">E</div> -->
-			</div>
-			<div class="mySlides"><img src="./img/놀랄만큼.jpg">
-				<!-- <div class="text">T</div> -->
-			</div>
-			<div class = "slideButton" id = "leftButton">
-				<img id="prev" src = "./img/slide_button/left.gif" onclick="plusSlides(-1)" />
-			</div>
-			<div class = "slideButton" id = "rightButton">
-				<img id="next" src = "./img/slide_button/right.gif" onclick="plusSlides(1)"/>
-			</div>
-			<div class= "dots">
-				<span class="dot" onclick="currentSlide(1)"></span>
-				<span class="dot" onclick="currentSlide(2)"></span>
-				<span class="dot" onclick="currentSlide(3)"></span>
-				<span class="dot" onclick="currentSlide(4)"></span>
-				<span class="dot" onclick="currentSlide(5)"></span>
+				<div class="mySlides"><img src="./img/메인.jpg"></div>
+		  	<div class="mySlides"><img src="./img/전설속.png" ></div>
+				<div class="mySlides"><img src="./img/끝없이.PNG" ></div>
+				<div class="mySlides"><img src="./img/승리의.PNG" ></div>
+				<div class="mySlides"><img src="./img/놀랄만큼.jpg"></div>
+				<div class = "slideButton" id = "leftButton">
+					<img id="prev" src = "./img/slide_button/left.gif" onclick="moveSlides(-1)" />
+				</div>
+				<div class = "slideButton" id = "rightButton">
+					<img id="next" src = "./img/slide_button/right.gif" onclick="moveSlides(1)"/>
+				</div>
+				<div class= "dots">
+					<span class="dot" onclick="currentSlide(1)"></span>
+					<span class="dot" onclick="currentSlide(2)"></span>
+					<span class="dot" onclick="currentSlide(3)"></span>
+					<span class="dot" onclick="currentSlide(4)"></span>
+					<span class="dot" onclick="currentSlide(5)"></span>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class = "Introduce" id="Introduce">
-		<div>
-		</div>
-		<table id = "introducetable" border="2">
-			<tr>
-			<thead>
-					<th  colspan="2">
-						<h1 id = "IntroduceTitle"> H E A R T H _ S T O N E </h1>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
+		<div class = "Introduce" id="Introduce">
+			<table id = "introducetable" border="2">
 				<tr>
-					<td>
-						<img id = "IntroduceImg" src="./img/시작메뉴.jpg"/>
-					</td>
-					<td class = "IntroduceText">
-						<h1  id ="font">여관주인의 조언</h1>
-						<p id ="color">오호, 이제 하스스톤에 대해 좀 감을 잡으셨나 보군요.</p>
-						<div id = "introducement">
-							<p id = "size"> 좋습니다!<br>하지만 당신이 얼마나 게임에 능숙하든 알아야 할 몇 가지 사항들에 대해 말씀 드리고 싶군요.<br>거기 의자 하나 꺼내와서 앉으세요.</p>
-							<p id = "underline"><u> 하스스톤을 즐기는 데 필요한 기본적인 설명과 숙련자가 될 수 있는 비결을 알려드리지요.</u></p>
-						</div>
-					</td>
-				</tr>
-			</tbody>
+					<thead>
+						<th  colspan="2">
+							<h1 id = "IntroduceTitle"> H E A R T H _ S T O N E </h1>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><img id = "IntroduceImg" src="./img/메인3.png"/></td>
+						<td class = "IntroduceText">
+							<h1  id ="font">여관주인의 조언</h1>
+							<p id ="color">오호, 이제 하스스톤에 대해 좀 감을 잡으셨나 보군요.</p>
+							<div id = "introducement">
+								<p id = "size"> 좋습니다!<br>하지만 당신이 얼마나 게임에 능숙하든 알아야 할 몇 가지 사항들에 대해 말씀 드리고 싶군요.<br>거기 의자 하나 꺼내와서 앉으세요.</p>
+								<p id = "underline"><u> 하스스톤을 즐기는 데 필요한 기본적인 설명과 숙련자가 될 수 있는 비결을 알려드리지요.</u></p>
+							</div>
+						</td>
+					</tr>
+				</tbody>
 				<tfoot>
 					<tr>
 						<td class = "foothyperlink" colspan = "2">
@@ -111,134 +93,125 @@
 			</table>
 			<table id="chartTable">
 				<thead>
+					<p>영웅별 DECK 편성률</p>
 				</thead>
 				<tbody>
 					<tr>
-						<td colspan="2">
-							<canvas id="chart"></canvas>
-						</td>
+						<td colspan="2"><canvas id="chart"></canvas></td>
 					</tr>
 				</tbody>
-				<tfoot>
-
-				</tfoot>
+				<tfoot></tfoot>
 			</table>
 		</div>
+		<!-- End Introduce -->
+
 		<div class = "Gallery" id="Gallery">
-			<p></p>
 			<table id="titlehead" border="0">
-				<td>
-					<img src="./img/blizzard.png"/>
-				</td>
+				<td><img src="./img/blizzard.png"/></td>
 			</table>
 			<div class="row">
-		<div class="column" id="gallery1">
-			<h3 class="deckname">Warlock</h3>
-			<button class = "xbutton" id = "xbutton1" onclick="deleteGallery(this.id)"></button>
-			<img class="backgroundDeck" src="./img/굴단_덱.jpg"/>
-			<img class="hero" src="./img/굴단.jpg" onclick="openModal();current(1)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				<div class="column" id="gallery1">
+					<h3 class="deckname">Warlock</h3>
+					<button class = "xbutton" id = "xbutton1" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/굴단_덱.jpg"/>
+					<img class="hero" src="./img/굴단.jpg" onclick="openModal();current(1)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery2">
+					<h3 class="deckname">Druid</h3>
+					<button class = "xbutton" id = "xbutton2"	 onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/말퓨리온_덱.jpg"/>
+					<img class="hero" src="./img/말퓨리온.jpg" onclick="openModal();current(2)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery3">
+					<h3 class="deckname">Hunter</h3>
+					<button class = "xbutton" id = "xbutton3" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/렉사르_덱.jpg"/>
+					<img class="hero" src="./img/렉사르.jpg" onclick="openModal();current(3)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery4">
+					<h3 class="deckname">Rogue</h3>
+					<button class = "xbutton" id = "xbutton4" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/발리라_덱.jpg"/>
+					<img class="hero" src="./img/발리라.jpg" onclick="openModal();current(4)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery5">
+					<h3 class="deckname">Shaman</h3>
+					<button class = "xbutton" id = "xbutton5" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/스랄_덱.jpg"/>
+					<img class="hero" src="./img/스랄.jpg" onclick="openModal();current(5)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery6">
+					<h3 class="deckname">Priest</h3>
+					<button class = "xbutton" id = "xbutton6" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/안두인_덱.jpg"/>
+					<img class="hero" src="./img/안두인.jpg" onclick="openModal();current(6)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div  class="column" id="gallery7">
+					<h3 class="deckname">Paladin</h3>
+					<button class = "xbutton" id = "xbutton7" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/우서_덱.jpg"/>
+					<img class="hero" src="./img/우서.jpg" onclick="openModal();current(7)"onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery8">
+					<h3 class="deckname">Mage</h3>
+					<button class = "xbutton" id = "xbutton8" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/제이나_덱.jpg"/>
+					<img class="hero" src="./img/제이나.jpg" onclick="openModal();current(8)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+				<div class="column" id="gallery9">
+					<h3 class="deckname">Warrior</h3>
+					<button class = "xbutton" id = "xbutton9" onclick="deleteGallery(this.id)"></button>
+					<img class="backgroundDeck" src="./img/헬스크림_덱.jpg"/>
+					<img class="hero" src="./img/헬스크림.jpg" onclick="openModal();current(9)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
+				</div>
+			</div>
+			<!-- End row  -->
+			<div class="modal" id="myModal">
+				<div class="modal-content">
+					<div id="slide1" class="slides">
+						<div class="numbertext">1 / 9</div>
+						<img class="slidesimg"src="./img/굴단.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide2" class="slides">
+						<div class="numbertext">2 / 9</div>
+						<img class="slidesimg"src="./img/말퓨리온.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide3" class="slides">
+						<div class="numbertext">3 / 9</div>
+						<img class="slidesimg"src="./img/렉사르.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide4" class="slides">
+						<div class="numbertext">4 / 9</div>
+						<img class="slidesimg"src="./img/발리라.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide5" class="slides">
+						<div class="numbertext">5 / 9</div>
+						<img class="slidesimg"src="./img/스랄.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide6" class="slides">
+						<div class="numbertext">6 / 9</div>
+						<img class="slidesimg"src="./img/안두인.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide7" class="slides">
+						<div class="numbertext">7 / 9</div>
+						<img class="slidesimg"src="./img/우서.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide8" class="slides">
+						<div class="numbertext">8 / 9</div>
+						<img class="slidesimg"src="./img/제이나.jpg" onclick="closeModal()">
+					</div>
+					<div id="slide9" class="slides">
+						<div class="numbertext">9 / 9</div>
+						<img class="slidesimg"src="./img/헬스크림.jpg" onclick="closeModal()">
+					</div>
+					<a class="mprev" onclick="minus()">&#10094;</a>
+					<a class="mnext" onclick="plus()">&#10095;</a>
+				</div>
+				<!-- End modal-content -->
+			</div>
+			<!-- End Modal -->
 		</div>
-		<div class="column" id="gallery2">
-			<h3 class="deckname">Druid</h3>
-			<button class = "xbutton" id = "xbutton2"	 onclick="deleteGallery(this.id)"></button>
-			<img class="backgroundDeck" src="./img/말퓨리온_덱.jpg"/>
-			<img class="hero" src="./img/말퓨리온.jpg" onclick="openModal();current(2)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-		</div>
-		<div class="column" id="gallery3">
-			<h3 class="deckname">Hunter</h3>
-			<button class = "xbutton" id = "xbutton3" onclick="deleteGallery(this.id)"></button>
-			<img class="backgroundDeck" src="./img/렉사르_덱.jpg"/>
-			<img class="hero" src="./img/렉사르.jpg" onclick="openModal();current(3)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-		</div>
-	<div class="column" id="gallery4">
-		<h3 class="deckname">Rogue</h3>
-		<button class = "xbutton" id = "xbutton4" onclick="deleteGallery(this.id)"></button>
-		<img class="backgroundDeck" src="./img/발리라_덱.jpg"/>
-		<img class="hero" src="./img/발리라.jpg" onclick="openModal();current(4)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-	</div>
-	<div class="column" id="gallery5">
-		<h3 class="deckname">Shaman</h3>
-		<button class = "xbutton" id = "xbutton5" onclick="deleteGallery(this.id)"></button>
-		<img class="backgroundDeck" src="./img/스랄_덱.jpg"/>
-		<img class="hero" src="./img/스랄.jpg" onclick="openModal();current(5)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-	</div>
-	<div class="column" id="gallery6">
-		<h3 class="deckname">Priest</h3>
-		<button class = "xbutton" id = "xbutton6" onclick="deleteGallery(this.id)"></button>
-		<img class="backgroundDeck" src="./img/안두인_덱.jpg"/>
-		<img class="hero" src="./img/안두인.jpg" onclick="openModal();current(6)"  onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-	</div>
-	<div  class="column" id="gallery7">
-		<h3 class="deckname">Paladin</h3>
-		<button class = "xbutton" id = "xbutton7" onclick="deleteGallery(this.id)"></button>
-		<img class="backgroundDeck" src="./img/우서_덱.jpg"/>
-		<img class="hero" src="./img/우서.jpg" onclick="openModal();current(7)"onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-	</div>
-	<div class="column" id="gallery8">
-		<h3 class="deckname">Mage</h3>
-		<button class = "xbutton" id = "xbutton8" onclick="deleteGallery(this.id)"></button>
-		<img class="backgroundDeck" src="./img/제이나_덱.jpg"/>
-		<img class="hero" src="./img/제이나.jpg" onclick="openModal();current(8)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-	</div>
-	<div class="column" id="gallery9">
-		<h3 class="deckname">Warrior</h3>
-		<button class = "xbutton" id = "xbutton9" onclick="deleteGallery(this.id)"></button>
-		<img class="backgroundDeck" src="./img/헬스크림_덱.jpg"/>
-		<img class="hero" src="./img/헬스크림.jpg" onclick="openModal();current(9)" onmouseover="galleryover(this)" onmouseout="galleryout(this)">
-	</div>
-	<!-- </div> -->
-</div>
-	<div id="myModal" class="modal">
-		<div class="modal-content">
-			<div id="slide1" class="slides">
-				<div class="numbertext">1 / 9</div>
-					<img class="slidesimg"src="./img/굴단.jpg" onclick="closeModal()">
-			</div>
-			<div id="slide2" class="slides">
-				<div class="numbertext">2 / 9</div>
-					<img class="slidesimg"src="./img/말퓨리온.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide3" class="slides">
-				<div class="numbertext">3 / 9</div>
-					<img class="slidesimg"src="./img/렉사르.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide4" class="slides">
-				<div class="numbertext">4 / 9</div>
-					<img class="slidesimg"src="./img/발리라.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide5" class="slides">
-				<div class="numbertext">5 / 9</div>
-					<img class="slidesimg"src="./img/스랄.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide6" class="slides">
-				<div class="numbertext">6 / 9</div>
-					<img class="slidesimg"src="./img/안두인.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide7" class="slides">
-				<div class="numbertext">7 / 9</div>
-					<img class="slidesimg"src="./img/우서.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide8" class="slides">
-				<div class="numbertext">8 / 9</div>
-					<img class="slidesimg"src="./img/제이나.jpg" onclick="closeModal()">
-			</div>
-
-			<div id="slide9" class="slides">
-				<div class="numbertext">9 / 9</div>
-					<img class="slidesimg"src="./img/헬스크림.jpg" onclick="closeModal()">
-			</div>
-			<a class="mprev" onclick="minus()">&#10094;</a>
-			<a class="mnext" onclick="plus()">&#10095;</a>
-		</div>
-	</div>
-</div>
-			<!-- -->
+		<!-- End Galleary -->
 	<div id = "Guestbook" class = "Guestbook">
 		<div id="added_div">
 			<table class = "guesttable" border = "1">

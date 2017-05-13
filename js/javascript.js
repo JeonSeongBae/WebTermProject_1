@@ -1,76 +1,88 @@
+/* ImageSlide */
 var slideIndex = 1;
 var timer;
-function plusSlides(n) {
-  showSlides(slideIndex += n); // 슬라이드를 한개씩 넘기는 방식
+
+function moveSlides(n) {
+  showSlides(slideIndex += n);
 }
+
 function currentSlide(n) {
   showSlides(slideIndex = n); // 지정된 화면을 띄우기
 }
-function carousel(btnYN){
-   var i;
-   var x = document.getElementsByClassName("mySlides");
-  var y = document.getElementsByClassName("dot");
 
-   for(i=0; i<x.length;i++){
-      x[i].style.display = "none"; // 나머지 화면을 none으로
-    y[i].className = y[i].className.replace(" active", "");
-   }
-   if(btnYN != "Y")
-      slideIndex++;
-   if(slideIndex > x.length)
-      slideIndex = 1;
-   x[slideIndex-1].style.display = "block";
-  y[slideIndex-1].className += " active"
-}
 function showSlides(n) {
   var i;
   var imgslides = document.getElementsByClassName("mySlides");
-
   var dots = document.getElementsByClassName("dot");
   if (n > imgslides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = imgslides.length}
   for (i = 0; i < imgslides.length; i++) {
-      imgslides[i].style.display = "none";
-      dots[i].className = dots[i].className.replace(" active", "");
+    imgslides[i].style.display = "none";
+    dots[i].className = dots[i].className.replace(" active", "");
   }
   imgslides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-   setTimer();
-   carousel("Y");
-   }
-   function setTimer(){
-      clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
-      timer = null; // 타이머를 초기화
-      timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
-   }
+  carousel("Y");
+  setTimer();
+}
+
+function carousel(btnYN){
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var y = document.getElementsByClassName("dot");
+  for(i=0; i<x.length;i++){
+    x[i].style.display = "none"; // 나머지 화면을 none으로
+    y[i].className = y[i].className.replace(" active", "");
+  }
+  if(btnYN != "Y") slideIndex++;
+  if(slideIndex > x.length) slideIndex = 1;
+  x[slideIndex-1].style.display = "block";
+  y[slideIndex-1].className += " active"
+}
+
+function setTimer(){
+  clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
+  timer = null; // 타이머를 초기화
+  timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
+}
 
   var ctx = document.getElementById("chart");
   var chart = new Chart(ctx, {
     type: 'pie',
-      data: {
-          labels: ["Warrior", "Paladin", "Hunter", "Rogue", "Mage", "Priest", "Druid", "Shaman", "Warlock"],
-          datasets: [{
-              label: '(단위: %)',
-              data: [18.2, 17, 13.5, 13.3, 11.8, 9.7, 9.5, 5.4, 1.1],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-          }]
-      },
-      options: {
-          responsive: true,
-          responsiveAnimationDuration: 1,
-          title: {
-              display: true,
-              text: '영웅 별 Deck 편성률'
-          }
+    data: {
+      labels: ["Warrior", "Paladin", "Hunter", "Rogue", "Mage", "Priest", "Druid", "Shaman", "Warlock"],
+      datasets: [{
+        label: '(단위: %)',
+        data: [18.2, 17, 13.5, 13.3, 11.8, 9.7, 9.5, 5.4, 1.1],
+        backgroundColor: [
+          'rgba(255, 125, 0, 0.8)',
+          'rgba(0, 255, 125, 0.8)',
+          'rgba(125, 0, 255, 0.8)',
+          'rgba(255, 40, 40, 0.8)',
+          'rgba(40, 255, 40, 0.8)',
+          'rgba(40, 40, 255, 0.8)',
+          'rgba(255, 0, 125, 0.8)',
+          'rgba(125, 255, 0, 0.8)',
+          'rgba(0, 125, 255, 0.8)'
+        ],
+      }]
+    },
+    options: {
+      responsive: true,
+      responsiveAnimationDuration: 1,
+      title: {
+        display: true,
+        text: '영웅 별 Deck 편성률'
       }
-  });
+      // legend: {
+        // display: true,
+        // labels: {
+        //   fontColor: 'rgb(255, 99, 132)'
+        // }
+      // }
+    }
+  }
+);
 
 
 function openModal() {
@@ -92,27 +104,37 @@ function minus(){
 function current(n) {
   show(index = n, 0);
 }
-var slides = document.getElementsByClassName("slides");
 function show(n, pm) {
   var i;
-  if(localStorage.getItem("xbutton"+n) !== null){
-      if(pm === 1){
-        plus();
-      }
-      else{
-        minus();
-      }
-  }
-  else{
-    if (n > slides.length) {index = 1}
-    if (n < 1) {index = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+  var slides = document.getElementsByClassName("slides");
+    if (n > slides.length) {
+      n = 1
     }
-    slides[index-1].style.display = "block";
-  }
+    else if (n < 1) {
+      n = slides.length
+    }
+    else if(localStorage.getItem("xbutton"+n) !== null){
+        if(pm === 1){
+          plus();
+        }
+        else{
+          minus();
+        }
+    }
+    else{
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[index-1].style.display = "block";
+    }
 }
 
+function deleteGallery(id) {
+  var index_delete = id.split("n");
+  removedGallery = document.getElementById("gallery" + index_delete[1]);
+  localStorage.setItem(id, removedGallery);
+  removedGallery.remove();
+}
 function galleryover(elem){
   elem.style.opacity = "0.5";
   var hero = document.getElementsByClassName("hero");
@@ -134,13 +156,6 @@ function galleryout(elements){
   }
 }
 
-function deleteGallery(id) {
-  var index_delete = id.split("n");
-  document.getElementById("gallery" + index_delete[1]).remove();
-  // var slides = document.getElementsByClassName("slides")[index[1]].remove();
-  // slides[index_delete[1]].remove();
-  localStorage.setItem(id, id);
-}
 
 function update_storage(){
   for(var i = 1; i < 10 ; i++){
@@ -183,9 +198,7 @@ function dropdown() {
         div.style.height = pos + "px";
       }
     }
-
     document.getElementById("menu_button").innerHTML = "MENU";
-
   }
 }
 // Close the dropdown if the user clicks outside of it
