@@ -1,8 +1,54 @@
-var slideIndex = 1;
-var timer;
+/* Bar */
+
+function dropdown() {
+  var text = document.getElementById("menu_button").innerHTML;
+  var div = document.getElementById("myDropdown");
+  var pos = div.offsetHeight;
+
+  if (text == "MENU") {
+    var animation = setInterval(expand, 1);
+    function expand() {
+      if (pos > 240)
+      clearInterval(animation);
+      else {
+        pos += 2;
+        div.style.height = pos + "px";
+      }
+    }
+    document.getElementById("menu_button").innerHTML = "CLOSE";
+    document.getElementById("myDropdown").classList.toggle("show");
+  } else {
+    var animation = setInterval(collapse, 1);
+    function collapse() {
+      if (pos < 0) {
+        clearInterval(animation);
+        document.getElementById("myDropdown").classList.toggle("show");
+      } else {
+        pos -= 2;
+        div.style.height = pos + "px";
+      }
+    }
+    document.getElementById("menu_button").innerHTML = "MENU";
+  }
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 /* ImageSlide */
 // 슬라이드를 움직이는 메소드
+var slideIndex = 1;
+var timer;
 function moveSlide(input) {
   showSlides(slideIndex += input); // slideIndex를 변경하여 이미지를 넘겨줌
 }
@@ -79,28 +125,31 @@ var chart = new Chart(ctx, {
     }
   }
 });
+/* modal을 열어줌 */
 function openModal() {
   document.getElementById('myModal').style.display = "block";
-  document.getElementsByClassName('mprev')[0].style = "z-index:0; position:absolute";
-  document.getElementsByClassName('mnext')[0].style = "z-index:0; position:absolute";
 }
+/* modal을 닫아줌 */
 function closeModal() {
   document.getElementById('myModal').style.display = "none";
 }
 var index = 1;
+// 다음 modalSlide를 띄워줌
 function plus() {
   show(++index, 1);
 }
+// 이전 modalSlide를 띄워줌
 function minus(){
   show(--index, 2);
 }
+// 클릭한 index의 modalSlide를 띄워줌
 function current(n) {
   show(index = n, 0);
 }
-
+// modalSlides를 띄워주는 메소드
 function show(n, pm) {
   var i;
-  var slides = document.getElementsByClassName("modalSlides");
+  var modalSlides = document.getElementsByClassName("modalSlides"); // modalSlides를 배열에 저장함
   if(localStorage.getItem("xbutton"+n) !== null){// modalSlide가 제거되어 localStorage에 있나 확인한다
       if(pm === 1){
         plus();
@@ -110,101 +159,54 @@ function show(n, pm) {
       } // localStorage에 존재하고 minus로 입력된 값이라면 reculsive를 사용하여 이전 화면을 띄움
   }
   else{ // modalSlide가 제거되지 않았다면 해당 modalIndex의 화면을 띄워준다.
-    if (n > slides.length) {index = 1;} // input값이 증가되어 modalSlides배열의 길이보다 커지면 다시 1로 돌려줌
-    if (n < 1) {index = slides.length;} // input값이 감소되어 modalSlides배열의 길이보다 커지면 다시 배열 길이로 돌려줌
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none"; // 다른 modalSlides를 none으로 바꿈
+    if (n > modalSlides.length) {index = 1;} // input값이 증가되어 modalSlides배열의 길이보다 커지면 다시 1로 돌려줌
+    if (n < 1) {index = modalSlides.length;} // input값이 감소되어 modalSlides배열의 길이보다 커지면 다시 배열 길이로 돌려줌
+    for (i = 0; i < modalSlides.length; i++) {
+      modalSlides[i].style.display = "none"; // 다른 modalSlides를 none으로 바꿈
     }
-    slides[index-1].style.display = "block"; // 해당 modalSlides를 화면에 띄움
+    modalSlides[index-1].style.display = "block"; // 해당 modalSlides를 화면에 띄움
   }
 }
-
+/* Gallery */
+// gallery에 마우스를 올렸을 때
 function galleryover(elem){
-  elem.style.opacity = "0.5";
-  var hero = document.getElementsByClassName("hero");
-  var deckname = document.getElementsByClassName("deckname");
+  elem.style.opacity = "0.5"; // 투명도를 50%
+  var hero = document.getElementsByClassName("hero"); // hero 이미지들을 배열에 저장
+  var deckname = document.getElementsByClassName("deckname"); // deckname을 배열에 저장
   for (var i = 0; i < hero.length; i++) {
     if (elem==hero[i]) {
-      deckname[i].style = "z-index: 1;"
+      deckname[i].style = "z-index: 1;" // deckname을 뒤로 숨김
     }
   }
 }
+// gallery에 마우스를 올렸다가 떼어냈을 때
 function galleryout(elements){
-  elements.style.opacity = "1";
-  var hero = document.getElementsByClassName("hero");
-  var deckname = document.getElementsByClassName("deckname");
+  elements.style.opacity = "1"; // 투명도를 없애줌
+  var hero = document.getElementsByClassName("hero"); // hero 이미지들을 배열에 저장
+  var deckname = document.getElementsByClassName("deckname"); // deckname을 배열에 저장
   for (var i = 0; i < deckname.length; i++) {
     if (elements==hero[i]) {
-      deckname[i].style = "z-index: 0;"
+      deckname[i].style = "z-index: 0;" // deckname을 앞으로 옮김
     }
   }
 }
-
+// gallery를 제거
 function deleteGallery(id) {
-  var index_delete = id.split("n");
-  delGalleary = document.getElementById("gallery" + index_delete[1]);
-  localStorage.setItem(id, delGalleary);
+  var deleteIndex = id.split("n"); // id로 받는 button에서 n을 기준으로 잘라내 뒤에 있는 n과 숫자만 index_delete에 저장
+  delGalleary = document.getElementById("gallery" + deleteIndex[1]);
+  localStorage.setItem(id, delGalleary); // localStorage에 key는 n+"number"를 저장하고 제거된 gallery를 value에 저장
   delGalleary.remove();
 }
-
+// localStorage를 update시켜줌
+update_storage(); // 최초 update_storage
 function update_storage(){
-  for(var i = 1; i < 10 ; i++)
+  for(var i = 1; i < 10 ; i++){
     if(localStorage.getItem("xbutton"+i) !== null)
       deleteGallery("xbutton"+i);
-}
-update_storage();
-
-
-
-
-
-function dropdown() {
-  var text = document.getElementById("menu_button").innerHTML;
-  var div = document.getElementById("myDropdown");
-  var pos = div.offsetHeight;
-
-  if (text == "MENU") {
-    var animation = setInterval(expand, 1);
-    function expand() {
-      if (pos > 240)
-      clearInterval(animation);
-      else {
-        pos += 2;
-        div.style.height = pos + "px";
-      }
-    }
-
-
-    document.getElementById("menu_button").innerHTML = "CLOSE";
-    document.getElementById("myDropdown").classList.toggle("show");
-
-  } else {
-    var animation = setInterval(collapse, 1);
-    function collapse() {
-      if (pos < 0) {
-        clearInterval(animation);
-        document.getElementById("myDropdown").classList.toggle("show");
-      } else {
-        pos -= 2;
-        div.style.height = pos + "px";
-      }
-    }
-    document.getElementById("menu_button").innerHTML = "MENU";
   }
 }
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+
+
 function post() {
    var name = document.getElementById("input_name").value;
    var text = document.getElementById("input_text").value;
