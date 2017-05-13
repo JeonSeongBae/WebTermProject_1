@@ -61,7 +61,6 @@ div.Bar button:hover, div.Bar button:focus {
     z-index: 1000;
     width: 100%;
 }
-
 .dropdown-content a {
     color: white;
     padding: 12px 16px;

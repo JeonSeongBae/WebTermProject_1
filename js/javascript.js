@@ -1,34 +1,33 @@
 /* Bar */
-
+// dropdownbutton
 function dropdown() {
-  var text = document.getElementById("menu_button").innerHTML;
+  var text = document.getElementById("menu_button").innerHTML; // MEUNU or CLOSE
   var div = document.getElementById("myDropdown");
   var pos = div.offsetHeight;
-
-  if (text == "MENU") {
-    var animation = setInterval(expand, 1);
-    function expand() {
-      if (pos > 240)
-      clearInterval(animation);
+  if (text == "MENU") { // text가 MENU일 경우
+    var animation = setInterval(expand, 1); // animation 효과를 내기위해 setInterval사용(1초마다 반복)
+    function expand() { // 길이가 늘어나는 함수
+      if (pos > 240) // 길이가 240px가 될 때까지
+      clearInterval(animation); // animation을 멈춰 줌
       else {
-        pos += 2;
-        div.style.height = pos + "px";
+        pos += 3; // 3씩 증가함
+        div.style.height = pos + "px"; // height를 변경시켜줌
       }
     }
-    document.getElementById("menu_button").innerHTML = "CLOSE";
+    document.getElementById("menu_button").innerHTML = "CLOSE"; // MENU에서 CLOSE로 변경
     document.getElementById("myDropdown").classList.toggle("show");
-  } else {
-    var animation = setInterval(collapse, 1);
+  } else { // text가 CLOSE일 경우
+    var animation = setInterval(collapse, 1); // animation 효과를 내기위해 setInteval 사용(1초마다 반복)
     function collapse() {
       if (pos < 0) {
-        clearInterval(animation);
+        clearInterval(animation); // 실행되고 있는 Interval을 처리함
         document.getElementById("myDropdown").classList.toggle("show");
       } else {
-        pos -= 2;
-        div.style.height = pos + "px";
+        pos -= 3; // 3씩 감소함
+        div.style.height = pos + "px"; // height를 변경시켜줌
       }
     }
-    document.getElementById("menu_button").innerHTML = "MENU";
+    document.getElementById("menu_button").innerHTML = "MENU"; //CLOSE에서 MENU로 변경
   }
 }
 // Close the dropdown if the user clicks outside of it
@@ -113,7 +112,7 @@ var chart = new Chart(ctx, {
           'rgba(125, 255, 0, 0.8)',
           'rgba(0, 125, 255, 0.8)'
         ],
-      }
+      } // Enddatasets
     ] // Enddatasets
   }, // Enddata
   options: {
@@ -200,83 +199,72 @@ function deleteGallery(id) {
 // localStorage를 update시켜줌
 update_storage(); // 최초 update_storage
 function update_storage(){
-  for(var i = 1; i < 10 ; i++){
-    if(localStorage.getItem("xbutton"+i) !== null)
+  for(var i = 1; i < 10 ; i++){ // 9개의 이미지 모두를 확인
+    if(localStorage.getItem("xbutton"+i) !== null) // localStorage에 해당 key값의 data가 없을 경우
       deleteGallery("xbutton"+i);
   }
 }
-
-
+/* GuestBook */
+var guest_index = 0;
 function post() {
    var name = document.getElementById("input_name").value;
    var text = document.getElementById("input_text").value;
-
    var div = document.getElementById("comment_div");
-
    var table = document.createElement("table");
    var tr1 = document.createElement("tr");
    var tr2 = document.createElement("tr");
-
    var td_name = document.createElement("td");
    td_name.innerHTML = "작성자 : " + name;
-
    var td_text = document.createElement("td");
    td_text.innerHTML = text;
-
    var td_button = document.createElement("td");
    td_button.setAttribute("id", "comment_td");
-
    var comment_button = document.createElement("button");
    comment_button.setAttribute("onclick", "comment_post()");
    comment_button.innerHTML = "댓글 등록하기";
    td_button.appendChild(comment_button);
-
    tr1.appendChild(td_name);
    tr1.appendChild(td_text);
    tr2.appendChild(td_button);
-
    table.appendChild(tr1);
    table.appendChild(tr2);
-
    div.appendChild(table);
 }
-
+// 댓글을 등록받는 함수
 function comment_post() {
    var text = prompt("댓글을 등록해 주세요");
-
    if (text != null) {
       document.getElementById("comment_td").innerHTML = text;
    }
 }
-var guest_index = 0;
+// guestbook을 추가하여 table에 tr을 만드는 메소드
 function add_guestbook(){
-    var i = guest_index;
-    var writer = document.getElementById("writer").value;
-    var content = document.getElementById("content").value;
-    document.getElementById("writer").value = null;
-    document.getElementById("content").value = null;
-    var adder = document.getElementById("added_div");
-    adder.style = "display:inline";
-    var tr = document.createElement("tr");
-    tr.className = "tr";
-    var td1 = document.createElement("td");
-    td1.className = "guestwriter";
-    var td2 = document.createElement("td");
-    td2.className = "guestcomment";
-    var td3 = document.createElement("td");
-    td3.className = "guestrecoment";
-    var comment = document.createElement("button");
-    comment.className = "comment";
-    comment.innerHTML = "답글달기";
-    document.getElementById("added").appendChild(tr);
-    document.getElementsByClassName("tr")[guest_index].appendChild(td1);
-    document.getElementsByClassName("tr")[guest_index].appendChild(td2);
-    document.getElementsByClassName("tr")[guest_index].appendChild(td3);
-    document.getElementsByClassName("guestwriter")[guest_index].innerHTML = writer;
-    document.getElementsByClassName("guestcomment")[guest_index].innerHTML = content;
-    document.getElementsByClassName("guestrecoment")[guest_index++].appendChild(comment);
-    comment.onclick = function add_comment(){
-      var comment_value = prompt("답글을 입력하세요");
-      document.getElementsByClassName("guestrecoment")[i].innerHTML = comment_value;
-    };
-  }
+  var i = guest_index;
+  var writer = document.getElementById("writer").value; // writer의 value값을 writer에 저장
+  var content = document.getElementById("content").value; // content의 value값을 content에 저장
+  var adder = document.getElementById("added_div");
+  var tr = document.createElement("tr");
+  tr.className = "tr";
+  var td1 = document.createElement("td");
+  td1.className = "guestwriter";
+  var td2 = document.createElement("td");
+  td2.className = "guestcomment";
+  var td3 = document.createElement("td");
+  td3.className = "guestrecoment";
+  var comment = document.createElement("button");
+  comment.className = "comment";
+  comment.innerHTML = "답글달기";
+  document.getElementById("added").appendChild(tr);
+  document.getElementsByClassName("tr")[guest_index].appendChild(td1); // td1을 Child로 만들어줌
+  document.getElementsByClassName("tr")[guest_index].appendChild(td2); // td2을 Child로 만들어줌
+  document.getElementsByClassName("tr")[guest_index].appendChild(td3); // td3을 Child로 만들어줌
+  document.getElementsByClassName("guestwriter")[guest_index].innerHTML = writer; // writer 위치
+  document.getElementsByClassName("guestcomment")[guest_index].innerHTML = content; // content 위치
+  document.getElementsByClassName("guestrecoment")[guest_index++].appendChild(comment); // comment를 Child로 만들어줌
+  document.getElementById("writer").value = null; // 현재 입력된 writer의 value값을 비워준다
+  document.getElementById("content").value = null; // 현재 입력된 writer의 value값을 비워준다
+  comment.onclick = function add_comment(){ // prompt창을 띄워 답글을 입력받고 해당 텍스트를 tr에 삽입
+    var comment_value = prompt("답글을 입력하세요");
+    document.getElementsByClassName("guestrecoment")[i].innerHTML = comment_value;
+  };
+}
