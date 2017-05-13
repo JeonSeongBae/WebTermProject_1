@@ -366,8 +366,10 @@ div.Gallery {
 .modal {
   display: none;
   position: fixed;
-  padding-top: 100px;
-  left: 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /*padding: inherit;*/
+  /*left: 0;*/
   top: 0;
   width: 100%;
   height: 100%;
@@ -378,13 +380,10 @@ div.Gallery {
 
 /* Modal Content */
 div.modal-content {
-  position: relative;
-  background-color: #fefefe;
   margin: auto;
   padding: 0;
   width: 800px;
-  height: 500px;
-  z-index: 0;
+  height: 100%;
 }
 img.demo {
   width: 200px;
@@ -410,13 +409,11 @@ img.slidesimg{
   width: 100%;
   height: 100%;
 }
-div.slides {
-  /*padding-top: 50px;*/
-  display: none;
+div.modalSlides {
+  float: right;
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
   background-color: #F5ECCE;
 }
 #modalrow{
@@ -425,7 +422,6 @@ div.slides {
 /* Next & previous buttons */
 .mprev, .mnext {
   cursor: pointer;
-  position: fixed;
   top: 50%;
   width: auto;
   padding: 16px;
@@ -434,12 +430,15 @@ div.slides {
   font-weight: bold;
   font-size: 20px;
   transition: 0.6s ease;
+  z-index: 2;
 }
 
 /* Position the "next button" to the right */
+.mprev{
+  left: 20%;
+}
 .mnext {
-  right: 0;
-  /*border-radius: 3px 0 0 3px;*/
+  right: 20%;
 }
 
 /* On hover, add a black background color with a little bit see-through */

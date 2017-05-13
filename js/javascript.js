@@ -1,60 +1,62 @@
-/* ImageSlide */
 var slideIndex = 1;
 var timer;
 
-function moveSlides(n) {
-  showSlides(slideIndex += n);
+/* ImageSlide */
+// 슬라이드를 움직이는 메소드
+function moveSlide(input) {
+  showSlides(slideIndex += input); // slideIndex를 변경하여 이미지를 넘겨줌
 }
-
-function currentSlide(n) {
-  showSlides(slideIndex = n); // 지정된 화면을 띄우기
+// 입력된 값의 slide를 띄워줌
+function currentSlide(input) {
+  showSlides(slideIndex = input); // 입력된 값으로 slideIndex를 바꿔줌
 }
-
-function showSlides(n) {
+// 입력된 값의 index 이미지를 창에 띄우고 나머지는 none으로 가려줌
+// dots는 className을 변경하여 css를 이용 변화를 줌
+function showSlides(input) {
   var i;
-  var imgslides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > imgslides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = imgslides.length}
-  for (i = 0; i < imgslides.length; i++) {
-    imgslides[i].style.display = "none";
-    dots[i].className = dots[i].className.replace(" active", "");
+  var imgSlides = document.getElementsByClassName("mySlides"); // slide 이미지들을 imgSlides 배열에 저장
+  var imgDots = document.getElementsByClassName("dot"); // dot 이미지들을 imgDots 배열에 저장
+  if (input > imgSlides.length && input > imgDots.length) {slideIndex = 1} // input 값이 imgSlides와 imgDots의 길이를 넘어가면 slideIndex를 다시 1로 돌려줌
+  if (input < 1) {slideIndex = imgSlides.length}
+  for (i = 0; i < imgSlides.length; i++) {
+    imgSlides[i].style.display = "none"; // 나머지 화면을 none으로 저장
+    imgDots[i].className = imgDots[i].className.replace(" active", ""); // active라는 string을 다시 제거
   }
-  imgslides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  carousel("Y");
-  setTimer();
+  imgSlides[slideIndex-1].style.display = "block"; // block으로 화면에 표시
+  imgDots[slideIndex-1].className += " active"; // active라는 string을 className 뒤에 붙여줌
+  setTimer(); // timer를 설정
 }
-
+// timer로 넘어가 실행될 Method
 function carousel(btnYN){
   var i;
-  var x = document.getElementsByClassName("mySlides");
-  var y = document.getElementsByClassName("dot");
-  for(i=0; i<x.length;i++){
-    x[i].style.display = "none"; // 나머지 화면을 none으로
-    y[i].className = y[i].className.replace(" active", "");
+  var timerimgSlides = document.getElementsByClassName("mySlides"); // slide 이미지들을 imgSlides 배열에 저장
+  var timerimgDots = document.getElementsByClassName("dot"); // dot 이미지들을 imgDots 배열에 저장
+  if(slideIndex > timerimgSlides.length && slideIndex > timerimgDots.length) slideIndex = 1; // slideIndex가 Slides와 Dots의 개수보다 커지면 다시 1로 돌려줌
+  for(i=0; i<timerimgSlides.length; i++){
+    timerimgSlides[i].style.display = "none"; // 나머지 화면을 none으로 저장
+    timerimgDots[i].className = timerimgDots[i].className.replace(" active", ""); // active라는 string을 다시 제거
   }
-  if(btnYN != "Y") slideIndex++;
-  if(slideIndex > x.length) slideIndex = 1;
-  x[slideIndex-1].style.display = "block";
-  y[slideIndex-1].className += " active"
+  slideIndex++; // slideIndex를 1증가시켜 다음 화면으로 자동으로 넘겨줌
+  timerimgSlides[slideIndex-1].style.display = "block"; // block으로 화면에 표시
+  timerimgDots[slideIndex-1].className += " active" // active라는 string을 className 뒤에 붙여줌
 }
-
+// timer의 기능
 function setTimer(){
   clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
-  timer = null; // 타이머를 초기화
+  timer = null; // 동시에 여러 timer가 실행되지 않도록 타이머를 초기화
   timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
 }
-
-  var ctx = document.getElementById("chart");
-  var chart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ["Warrior", "Paladin", "Hunter", "Rogue", "Mage", "Priest", "Druid", "Shaman", "Warlock"],
-      datasets: [{
+/* chart */
+var ctx = document.getElementById("chart");
+var chart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Warrior", "Paladin", "Hunter", "Rogue", "Mage", "Priest", "Druid", "Shaman", "Warlock"], // chart의 label 이름 저장
+    datasets: [
+      {
         label: '(단위: %)',
-        data: [18.2, 17, 13.5, 13.3, 11.8, 9.7, 9.5, 5.4, 1.1],
-        backgroundColor: [
+        data: [18.2, 17, 13.5, 13.3, 11.8, 9.7, 9.5, 5.4, 1.1], // chart의 value값 저장
+        backgroundColor: [ // chart의 색상을 각각 저장
           'rgba(255, 125, 0, 0.8)',
           'rgba(0, 255, 125, 0.8)',
           'rgba(125, 0, 255, 0.8)',
@@ -65,29 +67,20 @@ function setTimer(){
           'rgba(125, 255, 0, 0.8)',
           'rgba(0, 125, 255, 0.8)'
         ],
-      }]
-    },
-    options: {
-      responsive: true,
-      responsiveAnimationDuration: 1,
-      title: {
-        display: true,
-        text: '영웅 별 Deck 편성률'
       }
-      // legend: {
-        // display: true,
-        // labels: {
-        //   fontColor: 'rgb(255, 99, 132)'
-        // }
-      // }
+    ] // Enddatasets
+  }, // Enddata
+  options: {
+    responsive: true,
+    responsiveAnimationDuration: 1,
+    title: {
+      display: true,
+      text: '영웅 별 Deck 편성률'
     }
   }
-);
-
-
+});
 function openModal() {
   document.getElementById('myModal').style.display = "block";
-  // document.getElementById('myModal').style = "position : relative"
   document.getElementsByClassName('mprev')[0].style = "z-index:0; position:absolute";
   document.getElementsByClassName('mnext')[0].style = "z-index:0; position:absolute";
 }
@@ -104,37 +97,28 @@ function minus(){
 function current(n) {
   show(index = n, 0);
 }
+
 function show(n, pm) {
   var i;
-  var slides = document.getElementsByClassName("slides");
-    if (n > slides.length) {
-      n = 1
+  var slides = document.getElementsByClassName("modalSlides");
+  if(localStorage.getItem("xbutton"+n) !== null){// modalSlide가 제거되어 localStorage에 있나 확인한다
+      if(pm === 1){
+        plus();
+      }// localStorage에 존재하고 plus로 입력된 값이라면 reculsive를 사용하여 다음 화면을 띄움
+      else{
+        minus();
+      } // localStorage에 존재하고 minus로 입력된 값이라면 reculsive를 사용하여 이전 화면을 띄움
+  }
+  else{ // modalSlide가 제거되지 않았다면 해당 modalIndex의 화면을 띄워준다.
+    if (n > slides.length) {index = 1;} // input값이 증가되어 modalSlides배열의 길이보다 커지면 다시 1로 돌려줌
+    if (n < 1) {index = slides.length;} // input값이 감소되어 modalSlides배열의 길이보다 커지면 다시 배열 길이로 돌려줌
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; // 다른 modalSlides를 none으로 바꿈
     }
-    else if (n < 1) {
-      n = slides.length
-    }
-    else if(localStorage.getItem("xbutton"+n) !== null){
-        if(pm === 1){
-          plus();
-        }
-        else{
-          minus();
-        }
-    }
-    else{
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slides[index-1].style.display = "block";
-    }
+    slides[index-1].style.display = "block"; // 해당 modalSlides를 화면에 띄움
+  }
 }
 
-function deleteGallery(id) {
-  var index_delete = id.split("n");
-  removedGallery = document.getElementById("gallery" + index_delete[1]);
-  localStorage.setItem(id, removedGallery);
-  removedGallery.remove();
-}
 function galleryover(elem){
   elem.style.opacity = "0.5";
   var hero = document.getElementsByClassName("hero");
@@ -156,15 +140,23 @@ function galleryout(elements){
   }
 }
 
+function deleteGallery(id) {
+  var index_delete = id.split("n");
+  delGalleary = document.getElementById("gallery" + index_delete[1]);
+  localStorage.setItem(id, delGalleary);
+  delGalleary.remove();
+}
 
 function update_storage(){
-  for(var i = 1; i < 10 ; i++){
-    if(localStorage.getItem("xbutton"+i) !== null){
+  for(var i = 1; i < 10 ; i++)
+    if(localStorage.getItem("xbutton"+i) !== null)
       deleteGallery("xbutton"+i);
-    }
-  }
 }
 update_storage();
+
+
+
+
 
 function dropdown() {
   var text = document.getElementById("menu_button").innerHTML;
@@ -174,9 +166,9 @@ function dropdown() {
   if (text == "MENU") {
     var animation = setInterval(expand, 1);
     function expand() {
-      if (pos > 240) {
-        clearInterval(animation);
-      } else {
+      if (pos > 240)
+      clearInterval(animation);
+      else {
         pos += 2;
         div.style.height = pos + "px";
       }
@@ -192,7 +184,6 @@ function dropdown() {
       if (pos < 0) {
         clearInterval(animation);
         document.getElementById("myDropdown").classList.toggle("show");
-
       } else {
         pos -= 2;
         div.style.height = pos + "px";
@@ -204,7 +195,6 @@ function dropdown() {
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
