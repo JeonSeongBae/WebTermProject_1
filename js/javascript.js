@@ -172,23 +172,13 @@ function show(n, pm) {
 /* Gallery */
 // gallery에 마우스를 올렸을 때
 function galleryover(elem){
-  elem.style.opacity = "0.5"; // 투명도를 50%
-  var hero = document.getElementsByClassName("hero"); // hero 이미지들을 배열에 저장
-  var deckname = document.getElementsByClassName("deckname"); // deckname을 배열에 저장
-  for (var i = 0; i < hero.length; i++) {
-    if (elem==hero[i]) {
-      deckname[i].style = "z-index: 1;" // deckname을 뒤로 숨김
+
     }
   }
 }
 // gallery에 마우스를 올렸다가 떼어냈을 때
 function galleryout(elements){
-  elements.style.opacity = "1"; // 투명도를 없애줌
-  var hero = document.getElementsByClassName("hero"); // hero 이미지들을 배열에 저장
-  var deckname = document.getElementsByClassName("deckname"); // deckname을 배열에 저장
-  for (var i = 0; i < deckname.length; i++) {
-    if (elements==hero[i]) {
-      deckname[i].style = "z-index: 0;" // deckname을 앞으로 옮김
+
     }
   }
 }
@@ -199,12 +189,7 @@ function deleteGallery(id) {
   localStorage.setItem(id, delGalleary); // localStorage에 key는 n+"number"를 저장하고 제거된 gallery를 value에 저장
   delGalleary.remove();
 }
-// localStorage를 update시켜줌
-update_storage(); // 최초 update_storage
-function update_storage(){
-  for(var i = 1; i < 10 ; i++){ // 9개의 이미지 모두를 확인
-    if(localStorage.getItem("xbutton"+i) !== null) // localStorage에 해당 key값의 data가 없을 경우
-      deleteGallery("xbutton"+i);
+
   }
 }
 /* GuestBook */
