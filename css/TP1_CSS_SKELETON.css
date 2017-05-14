@@ -526,11 +526,11 @@ thead #guesttitle{
   font-size: 35px;
   margin: 0;
 }
-/*div.ogDiv{
+div.url{
   max-width: 277px;
-  max-height: 277px;
-}*/
-div.ogDiv img{
+  margin: auto;
+}
+div.url img{
   max-width: 200px;
   max-height: 200px;
 }

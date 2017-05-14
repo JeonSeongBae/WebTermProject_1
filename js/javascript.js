@@ -238,9 +238,9 @@ function comment_post() {
       document.getElementById("comment_td").innerHTML = text;
    }
 }
-var guest_index = 0;
-function add_guestbook(){//방명록에 정보를 추가해주는 메소드
-  var i = guest_index;
+var guestIndex = 0;
+function reply(){//방명록에 정보를 추가해주는 메소드
+  var i = guestIndex;
   var writer = document.getElementById("writer").value;
   var content = document.getElementById("content").value;
   document.getElementById("writer").value = null;
@@ -252,30 +252,26 @@ function add_guestbook(){//방명록에 정보를 추가해주는 메소드
   var td1 = document.createElement("td");
   td1.className = "guestWriter";
   var td2 = document.createElement("td");
-  td2.className = "b";
+  td2.className = "guestComment";
   var td3 = document.createElement("td");
-  td3.className = "c";
+  td3.className = "guestRecomment";
   var comment = document.createElement("button");
   comment.className = "comment";
   comment.innerHTML = "답글달기";
   document.getElementById("added").appendChild(tr);
-  document.getElementsByClassName("tr")[guest_index].appendChild(td1);
-  document.getElementsByClassName("tr")[guest_index].appendChild(td2);
-  document.getElementsByClassName("tr")[guest_index].appendChild(td3);
+  document.getElementsByClassName("tr")[guestIndex].appendChild(td1);
+  document.getElementsByClassName("tr")[guestIndex].appendChild(td2);
+  document.getElementsByClassName("tr")[guestIndex].appendChild(td3);
 
-  document.getElementsByClassName("guestWriter")[guest_index].innerHTML = writer;
-  document.getElementsByClassName("b")[guest_index].innerHTML = content;
-  document.getElementsByClassName("c")[guest_index].appendChild(comment);
+  document.getElementsByClassName("guestWriter")[guestIndex].innerHTML = writer;
+  document.getElementsByClassName("guestComment")[guestIndex].innerHTML = content;
+  document.getElementsByClassName("guestRecomment")[guestIndex].appendChild(comment);
   comment.onclick = function add_comment(){//방명록에 대한 답글을 남기는 메소드(웹 정보일 경우 URL을 나타내어준다.)
     var comment_value = prompt("덧글을 입력하세요");
-
-    if(comment_value.includes("www.") ||  comment_value.includes("http://") || comment_value.includes("https://")) {
-      if(comment_value.includes("http://") || comment_value.includes("https://")) {
-      } else {
+    if(comment_value.includes("www.") ||  comment_value.includes("http://") || comment_value.includes("https://")) { // URL 입력일 경ㅇ
+      if(!comment_value.includes("http://") || !comment_value.includes("https://"))
         comment_value = "http://" + comment_value;
-      }
-
-      $.ajax({//jquery
+      $.ajax({ // Jquery사용
         type: 'POST',
         url: 'https://graph.facebook.com',
         data: {
@@ -283,45 +279,46 @@ function add_guestbook(){//방명록에 정보를 추가해주는 메소드
           scrape: true
         },
         success: function(response) {
-          var content_comment = document.getElementsByClassName("c")[i];
+          var content_comment = document.getElementsByClassName("guestRecomment")[i];
           console.log(response);
           content_comment.removeChild(content_comment.childNodes[0]);
-          content_comment.appendChild(add_og(response));
+          content_comment.appendChild(url(response));
         },
         error: function(response) {
-          document.getElementsByClassName("c")[i].innerHTML = comment_value;
+          document.getElementsByClassName("guestRecomment")[i].innerHTML = comment_value;
         }
       });
-    } else {
-      document.getElementsByClassName("c")[i].innerHTML = comment_value;
+    } else { // 일반 답글일 경우
+      document.getElementsByClassName("guestRecomment")[i].innerHTML = comment_value;
     }
   }
-  guest_index++;
+  guestIndex++;
 }
-function add_og(response) {
+
+function url(response) {
   var link = document.createElement("guestWriter");
   link.href = response.url;
   link.target = "_blank";
   var div = document.createElement("div");
-  div.className = "ogDiv";
-  var left_div = document.createElement("div");
-  left_div.id = "left_og_div";
+  div.className = "url";
+  var urlImage = document.createElement("div");
+  urlImage.id = "urlImage";
   var image = document.createElement("img");
   image.src = response.image[0].url;
-  left_div.appendChild(image);
-  var right_div = document.createElement("div");
-  right_div.id = "right_og_div";
+  urlImage.appendChild(image);
+  var urlData = document.createElement("div");
+  urlData.id = "urlData";
   var title = document.createElement("h3");
   title.innerHTML = response.title;
   var description = document.createElement("p");
   description.innerHTML = response.description;
   var url = document.createElement("p");
   url.innerHTML = response.url;
-  right_div.appendChild(title);
-  right_div.appendChild(description);
-  right_div.appendChild(url);
-  div.appendChild(left_div);
-  div.appendChild(right_div);
+  urlData.appendChild(title);
+  urlData.appendChild(description);
+  urlData.appendChild(url);
+  div.appendChild(urlImage);
+  div.appendChild(urlData);
   link.appendChild(div);
   return link;
 }
