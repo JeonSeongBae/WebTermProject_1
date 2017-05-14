@@ -92,7 +92,7 @@ function carousel(btnYN){
 function setTimer(){
   clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
   timer = null; // 동시에 여러 timer가 실행되지 않도록 타이머를 초기화
-  timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
+  timer =  setInterval("carousel()", 1000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
 }
 /* chart */
 var ctx = document.getElementById("chart");
@@ -237,9 +237,9 @@ function comment_post() {
    var text = prompt("댓글을 등록해 주세요");
    if (text != null){ document.getElementById("comment_td").innerHTML = text; }
 }
-/* guest 답변달기 */
+/*  */
 var guestIndex = 0;
-function reply(){
+function reply(){//방명록에 정보를 추가해주는 메소드
   var i = guestIndex;
   var writer = document.getElementById("writer").value;
   var content = document.getElementById("content").value;
@@ -294,7 +294,7 @@ function reply(){
   }
   guestIndex++;
 }
-/* URL 정보를 가지고 오는 메소드 */
+/* URL */
 function url(response) {
   var link = document.createElement("guestWriter");
   link.href = response.url;
