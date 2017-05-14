@@ -219,45 +219,45 @@
 	</div>
 </div>
 			<!-- -->
-	<div id = "Guestbook" class = "Guestbook">
-		<div id="added_div">
+			<div id = "Guestbook" class = "Guestbook">
+				<div id="added_div">
+					<table class = "guesttable" border = "1">
+						<thead>
+							<tr>
+
+							</tr>
+						</thead>
+						<tbody id = "added">
+							<tr>
+								<th  id="commentwriter">작 성 자</th>
+								<th id="commentcomment">내 용</th>
+								<th `id="commentrecoment">답 글</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			<table class = "guesttable" border = "1">
 				<thead>
-					<tr>
-
-					</tr>
+						<th colspan="5"><h1 id="guesttitle">G u e s t _ B o o k</h1></th>
 				</thead>
-				<tbody id = "added">
-					<tr>
-						<th  id="commentwriter">닉 네 임</th>
-						<th id="commentcomment">내 용</th>
-						<th `id="commentrecoment">답 글</th>
-					</tr>
-				</tbody>
+				<!-- <div id = "Guest_content"> -->
+					<tbody>
+						<tr>
+							<td>작 성 자</td>
+							<td>
+								<h3><input type = "text" id = "writer" size = "100"></h3>
+								</td>
+							<td>내 용</td>
+							<td>
+								<h3><textarea id = "content" form = "Guestbook"  wrap = "hard" size = "100"></textarea></h3>
+							</td>
+							<td><input type="submit" name="guest" value="제출하기" onclick = "add_guestbook()"></td>
+						</tr>
+					</tbody>
+				<!-- </div> -->
 			</table>
-		</div>
-	<table class = "guesttable" border = "1">
-		<thead>
-				<th colspan="5"><h1 id="guesttitle">G u e s t _ B o o k</h1></th>
-		</thead>
-		<!-- <div id = "Guest_content"> -->
-			<tbody>
-				<tr>
-					<td>닉 네 임</td>
-					<td>
-						<h3><input type = "text" id = "writer" size = "100"></h3>
-						</td>
-					<td>내 용</td>
-					<td>
-						<h3><textarea id = "content" form = "Guestbook" id = "content" wrap = "hard" size = "100"></textarea></h3>
-					</td>
-					<td><input type="submit" name="guest" value="제출하기" onclick = "add_guestbook()"></td>
-				</tr>
-			</tbody>
-		<!-- </div> -->
-	</table>
-	<div class="writed_content" id = "writed_content"></div>
-	</div>
+			<div class="writed_content" id = "writed_content"></div>
+			</div>
 			<!--  -->
 	</main>
 	<footer>
@@ -267,6 +267,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="./js/jquery-3.2.1.min.js"></script>
 	<script src="./js/javascript.js"></script>
 </body>
 </html>

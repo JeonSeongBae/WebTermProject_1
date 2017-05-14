@@ -31,7 +31,7 @@ function dropdown() {
   }
 }
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
+window.onclick = function(event) { // 메뉴버튼을 활성화시켰을 경우 바탕을 누르면 drop메뉴가 사라짐
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
@@ -208,10 +208,9 @@ function update_storage(){
   }
 }
 /* GuestBook */
-var guestbookIndex = 0;
 function post() {
-   var name = document.getElementById("input_name").value;
-   var text = document.getElementById("input_text").value;
+   var name = document.getElementById("writer").value;
+   var text = document.getElementById("comment").value;
    var div = document.getElementById("comment_div");
    var table = document.createElement("table");
    var tr1 = document.createElement("tr");
@@ -233,41 +232,96 @@ function post() {
    table.appendChild(tr2);
    div.appendChild(table);
 }
-// 댓글을 등록받는 함수
 function comment_post() {
    var text = prompt("댓글을 등록해 주세요");
    if (text != null) {
-      document.getElementById("comment_td").innerHTML = text; // prompt를 통해 입력받은 값을 comment_td에 저장
+      document.getElementById("comment_td").innerHTML = text;
    }
 }
-// guestbook을 추가하여 table에 tr을 만드는 메소드
-function add_guestbook(){
-  var writer = document.getElementById("writer").value; // writer의 value값을 writer에 저장
-  var content = document.getElementById("content").value; // content의 value값을 content에 저장
+var guest_index = 0;
+function add_guestbook(){//방명록에 정보를 추가해주는 메소드
+  var i = guest_index;
+  var writer = document.getElementById("writer").value;
+  var content = document.getElementById("content").value;
+  document.getElementById("writer").value = null;
+  document.getElementById("content").value = null;
   var adder = document.getElementById("added_div");
+  adder.style = "display:inline";
   var tr = document.createElement("tr");
   tr.className = "tr";
-  // 각각의 td를 writer, comment, recoment에 저장해줌
   var td1 = document.createElement("td");
-  td1.className = "guestwriter";
+  td1.className = "guestWriter";
   var td2 = document.createElement("td");
-  td2.className = "guestcomment";
+  td2.className = "b";
   var td3 = document.createElement("td");
-  td3.className = "guestrecoment";
+  td3.className = "c";
   var comment = document.createElement("button");
   comment.className = "comment";
-  comment.innerHTML = "답 글";
+  comment.innerHTML = "답글달기";
   document.getElementById("added").appendChild(tr);
-  document.getElementsByClassName("tr")[guestbookIndex].appendChild(td1); // td1을 Child로 만들어줌
-  document.getElementsByClassName("tr")[guestbookIndex].appendChild(td2); // td2을 Child로 만들어줌
-  document.getElementsByClassName("tr")[guestbookIndex].appendChild(td3); // td3을 Child로 만들어줌
-  document.getElementsByClassName("guestwriter")[guestbookIndex].innerHTML = writer; // writer 위치
-  document.getElementsByClassName("guestcomment")[guestbookIndex].innerHTML = content; // content 위치
-  document.getElementsByClassName("guestrecoment")[guestbookIndex++].appendChild(comment); // comment를 Child로 만들어줌
-  document.getElementById("writer").value = null; // 현재 입력된 writer의 value값을 비워준다
-  document.getElementById("content").value = null; // 현재 입력된 writer의 value값을 비워준다
-  comment.onclick = function add_comment(){ // prompt창을 띄워 답글을 입력받고 해당 텍스트를 tr에 삽입
-    var recommentText = prompt("답글을 입력하세요");
-    document.getElementsByClassName("guestrecoment")[guestbookIndex].innerHTML = recommentText;
-  };
+  document.getElementsByClassName("tr")[guest_index].appendChild(td1);
+  document.getElementsByClassName("tr")[guest_index].appendChild(td2);
+  document.getElementsByClassName("tr")[guest_index].appendChild(td3);
+
+  document.getElementsByClassName("guestWriter")[guest_index].innerHTML = writer;
+  document.getElementsByClassName("b")[guest_index].innerHTML = content;
+  document.getElementsByClassName("c")[guest_index].appendChild(comment);
+  comment.onclick = function add_comment(){//방명록에 대한 답글을 남기는 메소드(웹 정보일 경우 URL을 나타내어준다.)
+    var comment_value = prompt("덧글을 입력하세요");
+
+    if(comment_value.includes("www.") ||  comment_value.includes("http://") || comment_value.includes("https://")) {
+      if(comment_value.includes("http://") || comment_value.includes("https://")) {
+      } else {
+        comment_value = "http://" + comment_value;
+      }
+
+      $.ajax({//jquery
+        type: 'POST',
+        url: 'https://graph.facebook.com',
+        data: {
+          id: comment_value,
+          scrape: true
+        },
+        success: function(response) {
+          var content_comment = document.getElementsByClassName("c")[i];
+          console.log(response);
+          content_comment.removeChild(content_comment.childNodes[0]);
+          content_comment.appendChild(add_og(response));
+        },
+        error: function(response) {
+          document.getElementsByClassName("c")[i].innerHTML = comment_value;
+        }
+      });
+    } else {
+      document.getElementsByClassName("c")[i].innerHTML = comment_value;
+    }
+  }
+  guest_index++;
+}
+function add_og(response) {
+  var link = document.createElement("guestWriter");
+  link.href = response.url;
+  link.target = "_blank";
+  var div = document.createElement("div");
+  div.className = "ogDiv";
+  var left_div = document.createElement("div");
+  left_div.id = "left_og_div";
+  var image = document.createElement("img");
+  image.src = response.image[0].url;
+  left_div.appendChild(image);
+  var right_div = document.createElement("div");
+  right_div.id = "right_og_div";
+  var title = document.createElement("h3");
+  title.innerHTML = response.title;
+  var description = document.createElement("p");
+  description.innerHTML = response.description;
+  var url = document.createElement("p");
+  url.innerHTML = response.url;
+  right_div.appendChild(title);
+  right_div.appendChild(description);
+  right_div.appendChild(url);
+  div.appendChild(left_div);
+  div.appendChild(right_div);
+  link.appendChild(div);
+  return link;
 }

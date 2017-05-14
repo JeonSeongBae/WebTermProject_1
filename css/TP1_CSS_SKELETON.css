@@ -526,6 +526,14 @@ thead #guesttitle{
   font-size: 35px;
   margin: 0;
 }
+/*div.ogDiv{
+  max-width: 277px;
+  max-height: 277px;
+}*/
+div.ogDiv img{
+  max-width: 200px;
+  max-height: 200px;
+}
 /* Footer Start */
 footer {
     display: block;
