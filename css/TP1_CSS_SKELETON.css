@@ -347,8 +347,17 @@ div.modalSlides {
 #modalrow{
   text-align: center;
 }
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 /* Next & previous buttons */
 .mprev, .mnext {
+  position: absolute;
   cursor: pointer;
   top: 50%;
   width: auto;
