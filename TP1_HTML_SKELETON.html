@@ -27,7 +27,7 @@
 				</a>
 				<div class="dropdown">
 	        <button id="menu_button" onclick="dropdown()" class="dropbtn">MENU</button>
-	        <div class="dropdown-content">
+	        <div id="myDropdown" class="dropdown-content">
 	          <a href="#">HOME</a>
 	          <a href="#ImageSlide">IMAGE SLIDE</a>
 	          <a href="#Introduce">INTRODUCE</a>
@@ -41,21 +41,11 @@
 		<div class = "ImageSlide" id="ImageSlide">
 			<div class="slideshow-container">
 
-			<div class="mySlides"><img src="./img/메인.jpg">
-				<!-- <div class="text">S</div> -->
-		  </div>
-		  <div class="mySlides"><img src="./img/전설속.png" >
-		    <!-- <div class="text">O</div> -->
-		  </div>
-			<div class="mySlides"><img src="./img/끝없이.PNG" >
-				<!-- <div class="text">N</div> -->
-			</div>
-			<div class="mySlides"><img src="./img/승리의.PNG" >
-				<!-- <div class="text">E</div> -->
-			</div>
-			<div class="mySlides"><img src="./img/놀랄만큼.jpg">
-				<!-- <div class="text">T</div> -->
-			</div>
+			<div class="mySlides"><img src="./img/ImageSlide_1.jpg"></div>
+		  <div class="mySlides"><img src="./img/ImageSlide_2.png"></div>
+			<div class="mySlides"><img src="./img/ImageSlide_3.PNG"></div>
+			<div class="mySlides"><img src="./img/ImageSlide_4.PNG"></div>
+			<div class="mySlides"><img src="./img/ImageSlide_5.jpg"></div>
 			<div class = "slideButton" id = "leftButton">
 				<img id="prev" src = "./img/slide_button/left.gif" onclick="moveSlide(-1)" />
 			</div>
@@ -85,7 +75,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<img id = "IntroduceImg" src="./img/시작메뉴.jpg"/>
+						<img id = "IntroduceImg" src="./img/여관주인.jpg"/>
 					</td>
 					<td class = "IntroduceText">
 						<h1  id ="font">여관주인의 조언</h1>
@@ -100,9 +90,9 @@
 				<tfoot>
 					<tr>
 						<td class = "foothyperlink" colspan = "2">
-							<a href="https://www.naver.com/" class = "hyperlink" id = "naver" target="_blank">N A V E R</a>
-							<a href="https://www.google.com/" class = "hyperlink" id = "google" target="_blank">G O O G L E</a>
-							<a href="https://www.daum.net/" class = "hyperlink" id = "daum" target="_blank">D A U M</a>
+							<a href="http://kr.blizzard.com/ko-kr/" class = "hyperlink" id = "blizzard" target="_blank">B L I Z Z A R D</a>
+							<a href="http://kr.battle.net/hearthstone/ko/" class = "hyperlink" id = "hearthstone" target="_blank">H E A R T H S T O N E</a>
+							<a href="http://hs.inven.co.kr/" class = "hyperlink" id = "inven" target="_blank">I N V E N</a>
 						</td>
 					</tr>
 				</tfoot>
@@ -118,7 +108,6 @@
 					</tr>
 				</tbody>
 				<tfoot>
-
 				</tfoot>
 			</table>
 		</div>
@@ -240,7 +229,7 @@
 				</thead>
 				<tbody id = "added">
 					<tr>
-						<th  id="commentwriter">작 성 자</th>
+						<th  id="commentwriter">닉 네 임</th>
 						<th id="commentcomment">내 용</th>
 						<th `id="commentrecoment">답 글</th>
 					</tr>
@@ -254,7 +243,7 @@
 		<!-- <div id = "Guest_content"> -->
 			<tbody>
 				<tr>
-					<td>작 성 자</td>
+					<td>닉 네 임</td>
 					<td>
 						<h3><input type = "text" id = "writer" size = "100"></h3>
 						</td>

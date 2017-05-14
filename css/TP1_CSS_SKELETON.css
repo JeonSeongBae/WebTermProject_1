@@ -61,6 +61,7 @@ div.Bar button:hover, div.Bar button:focus {
     z-index: 1000;
     width: 100%;
 }
+
 .dropdown-content a {
     color: white;
     padding: 12px 16px;
@@ -91,7 +92,7 @@ div.Bar button:hover, div.Bar button:focus {
 
 div.ImageSlide{
   margin-top: 60px;
-  background-image: url("../img/메인.jpg");
+  background-image: url("../img/ImageSlide_1.jpg");
   background-size:100% 100%;
   background-position: center;
   position: relative;
@@ -123,18 +124,35 @@ div.ImageSlide{
 
 .foothyperlink{text-align: center; padding: 0 10px;}
 
-a.hyperlink{
+.hyperlink{
   padding: 20px;
   text-decoration: none;
 }
-a.hyperlink:hover{text-decoration: underline;}
+/* unvisited link */
+a:link {
+    color: black;
+}
 
+/* visited link */
+.hyperlink:visited {
+    color: gray;
+}
 
-a#naver{color: green;}
+/* mouse over link */
+.hyperlink:hover {
+  text-decoration: underline;
+    color: hotpink;
+}
 
-a#google{color: blue;}
+/* selected link */
+.hyperlink:active {
+    color: yellow;
+}
+a#blizzard{color: blue;}
 
-a#daum{color: pink;}
+a#hearthstone{color: RED;}
+
+a#inven{color: GREEN;}
 
 /* Slideshow container */
 .slideshow-container {
@@ -184,13 +202,11 @@ a#daum{color: pink;}
 }
 /* The dots/bullets/indicators */
 div.dots{
-  /*position: absolute;*/
   height: 10%;
   text-align: center;
   z-index: 0;
   float: none;
   position: relative;
-  /*margin-top: 200px;*/
 }
 .dot {
   cursor: pointer;
@@ -205,7 +221,6 @@ div.dots{
   position: static;
 }
 .active, .dot:hover {
-  /*background-color: #717171;*/
   background-color: black;
 }
 /* Fading animation */
@@ -215,18 +230,8 @@ div.dots{
   animation-name: fade;
   animation-duration: 1.5s;
 }
-
-/*@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}*/
 div.Introduce{
-  background-image: url("../img/시작메뉴.jpg");
+  background-image: url("../img/IntroduceBackgroundImage.jpg");
   background-size: 100% 100%;
   text-align: center;
   outline : none;
@@ -367,8 +372,6 @@ div.Gallery {
   position: fixed;
   padding-top: 40px;
   padding-bottom: 40px;
-  /*padding: inherit;*/
-  /*left: 0;*/
   top: 0;
   width: 100%;
   height: 100%;

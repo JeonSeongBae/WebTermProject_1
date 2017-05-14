@@ -73,23 +73,26 @@ function showSlides(input) {
 }
 // timer로 넘어가 실행될 Method
 function carousel(btnYN){
-  var i;
-  var timerimgSlides = document.getElementsByClassName("mySlides"); // slide 이미지들을 imgSlides 배열에 저장
-  var timerimgDots = document.getElementsByClassName("dot"); // dot 이미지들을 imgDots 배열에 저장
-  if(slideIndex > timerimgSlides.length && slideIndex > timerimgDots.length) slideIndex = 1; // slideIndex가 Slides와 Dots의 개수보다 커지면 다시 1로 돌려줌
-  for(i=0; i<timerimgSlides.length; i++){
-    timerimgSlides[i].style.display = "none"; // 나머지 화면을 none으로 저장
-    timerimgDots[i].className = timerimgDots[i].className.replace(" active", ""); // active라는 string을 다시 제거
-  }
-  slideIndex++; // slideIndex를 1증가시켜 다음 화면으로 자동으로 넘겨줌
-  timerimgSlides[slideIndex-1].style.display = "block"; // block으로 화면에 표시
-  timerimgDots[slideIndex-1].className += " active" // active라는 string을 className 뒤에 붙여줌
+	var i;
+	var x = document.getElementsByClassName("mySlides"); // slide 이미지들을 imgSlides 배열에 저장
+  var y = document.getElementsByClassName("dot"); // dot 이미지들을 imgDots 배열에 저장
+
+	for(i=0; i<x.length;i++){
+		x[i].style.display = "none"; // 나머지 화면을 none으로 저장
+    y[i].className = y[i].className.replace(" active", ""); // active라는 string을 다시 제거
+	}
+	slideIndex++; // slideIndex를 1증가시켜 다음 화면으로 자동으로 넘겨줌
+	if(slideIndex > x.length){slideIndex = 1;} // slideIndex가 Slides와 Dots의 개수보다 커지면 다시 1로 돌려줌
+	x[slideIndex-1].style.display = "block"; // block으로 화면에 표시
+  y[slideIndex-1].className += " active" // active라는 string을 className 뒤에 붙여줌
 }
+
+
 // timer의 기능
 function setTimer(){
   clearInterval(timer); // 타이머를 한개씩만 돌리기 위해
   timer = null; // 동시에 여러 timer가 실행되지 않도록 타이머를 초기화
-  timer =  setInterval("carousel()", 5000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
+  timer =  setInterval("carousel()", 1000); // 5초가 지나면 화면이 넘어가도록 timer를 지정
 }
 /* chart */
 var ctx = document.getElementById("chart");
@@ -205,7 +208,7 @@ function update_storage(){
   }
 }
 /* GuestBook */
-var guest_index = 0;
+var guestbookIndex = 0;
 function post() {
    var name = document.getElementById("input_name").value;
    var text = document.getElementById("input_text").value;
@@ -234,17 +237,17 @@ function post() {
 function comment_post() {
    var text = prompt("댓글을 등록해 주세요");
    if (text != null) {
-      document.getElementById("comment_td").innerHTML = text;
+      document.getElementById("comment_td").innerHTML = text; // prompt를 통해 입력받은 값을 comment_td에 저장
    }
 }
 // guestbook을 추가하여 table에 tr을 만드는 메소드
 function add_guestbook(){
-  var i = guest_index;
   var writer = document.getElementById("writer").value; // writer의 value값을 writer에 저장
   var content = document.getElementById("content").value; // content의 value값을 content에 저장
   var adder = document.getElementById("added_div");
   var tr = document.createElement("tr");
   tr.className = "tr";
+  // 각각의 td를 writer, comment, recoment에 저장해줌
   var td1 = document.createElement("td");
   td1.className = "guestwriter";
   var td2 = document.createElement("td");
@@ -253,18 +256,18 @@ function add_guestbook(){
   td3.className = "guestrecoment";
   var comment = document.createElement("button");
   comment.className = "comment";
-  comment.innerHTML = "답글달기";
+  comment.innerHTML = "답 글";
   document.getElementById("added").appendChild(tr);
-  document.getElementsByClassName("tr")[guest_index].appendChild(td1); // td1을 Child로 만들어줌
-  document.getElementsByClassName("tr")[guest_index].appendChild(td2); // td2을 Child로 만들어줌
-  document.getElementsByClassName("tr")[guest_index].appendChild(td3); // td3을 Child로 만들어줌
-  document.getElementsByClassName("guestwriter")[guest_index].innerHTML = writer; // writer 위치
-  document.getElementsByClassName("guestcomment")[guest_index].innerHTML = content; // content 위치
-  document.getElementsByClassName("guestrecoment")[guest_index++].appendChild(comment); // comment를 Child로 만들어줌
+  document.getElementsByClassName("tr")[guestbookIndex].appendChild(td1); // td1을 Child로 만들어줌
+  document.getElementsByClassName("tr")[guestbookIndex].appendChild(td2); // td2을 Child로 만들어줌
+  document.getElementsByClassName("tr")[guestbookIndex].appendChild(td3); // td3을 Child로 만들어줌
+  document.getElementsByClassName("guestwriter")[guestbookIndex].innerHTML = writer; // writer 위치
+  document.getElementsByClassName("guestcomment")[guestbookIndex].innerHTML = content; // content 위치
+  document.getElementsByClassName("guestrecoment")[guestbookIndex++].appendChild(comment); // comment를 Child로 만들어줌
   document.getElementById("writer").value = null; // 현재 입력된 writer의 value값을 비워준다
   document.getElementById("content").value = null; // 현재 입력된 writer의 value값을 비워준다
   comment.onclick = function add_comment(){ // prompt창을 띄워 답글을 입력받고 해당 텍스트를 tr에 삽입
-    var comment_value = prompt("답글을 입력하세요");
-    document.getElementsByClassName("guestrecoment")[i].innerHTML = comment_value;
+    var recommentText = prompt("답글을 입력하세요");
+    document.getElementsByClassName("guestrecoment")[guestbookIndex].innerHTML = recommentText;
   };
 }
