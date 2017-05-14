@@ -232,12 +232,12 @@ function post() {
    table.appendChild(tr2);
    div.appendChild(table);
 }
+/*  */
 function comment_post() {
    var text = prompt("댓글을 등록해 주세요");
-   if (text != null) {
-      document.getElementById("comment_td").innerHTML = text;
-   }
+   if (text != null){ document.getElementById("comment_td").innerHTML = text; }
 }
+/*  */
 var guestIndex = 0;
 function reply(){//방명록에 정보를 추가해주는 메소드
   var i = guestIndex;
@@ -262,11 +262,11 @@ function reply(){//방명록에 정보를 추가해주는 메소드
   document.getElementsByClassName("tr")[guestIndex].appendChild(td1);
   document.getElementsByClassName("tr")[guestIndex].appendChild(td2);
   document.getElementsByClassName("tr")[guestIndex].appendChild(td3);
-
   document.getElementsByClassName("guestWriter")[guestIndex].innerHTML = writer;
   document.getElementsByClassName("guestComment")[guestIndex].innerHTML = content;
   document.getElementsByClassName("guestRecomment")[guestIndex].appendChild(comment);
-  comment.onclick = function add_comment(){//방명록에 대한 답글을 남기는 메소드(웹 정보일 경우 URL을 나타내어준다.)
+  // 방명록에 덧글을 입력받는 메소드
+  comment.onclick = function add_comment(){
     var comment_value = prompt("덧글을 입력하세요");
     if(comment_value.includes("www.") ||  comment_value.includes("http://") || comment_value.includes("https://")) { // URL 입력일 경ㅇ
       if(!comment_value.includes("http://") || !comment_value.includes("https://"))
@@ -294,7 +294,7 @@ function reply(){//방명록에 정보를 추가해주는 메소드
   }
   guestIndex++;
 }
-
+/* URL */
 function url(response) {
   var link = document.createElement("guestWriter");
   link.href = response.url;
