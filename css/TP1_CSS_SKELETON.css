@@ -1,10 +1,7 @@
 @CHARSET "UTF-8";
-
+* {box-sizing:border-box}
+body{background-image: url("../img/배경색.jpg");}
 /* Menu bar Start */
-body{
-    background-image: url("../img/배경색.jpg");
-}
-
 div.Bar {
   overflow-y: visible;
   position: fixed;
@@ -15,7 +12,6 @@ div.Bar {
   width: 100%;
   z-index: 2;
 }
-
 div.Bar button {
   color: #C6B713;
   background-color: #452604;
@@ -31,10 +27,7 @@ div.Bar button {
   margin-right: 0px;
   margin-bottom: 8px;
 }
-div.Bar button:hover, div.Bar button:focus {
-  background-color: #222222;
-}
-
+div.Bar button:hover, div.Bar button:focus {background-color: #222222;}
 .dropbtn {
     background-color: inherit;
     color: black;
@@ -42,11 +35,6 @@ div.Bar button:hover, div.Bar button:focus {
     border: none;
     cursor: pointer;
 }
-
-.dropbtn:hover, .dropbtn:focus {
-
-}
-
 .dropdown {
     position: absolute;
     display: inline-block;
@@ -61,35 +49,18 @@ div.Bar button:hover, div.Bar button:focus {
     z-index: 1000;
     width: 100%;
 }
-
 .dropdown-content a {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-
 .dropdown a:hover {background-color: #222222}
-
 .show {display:block;}
 /* Menu bar End */
 
-
-
-#prevButton img {
-  float: left;
-  padding-top: 152px;
-}
-
-#nextButton img {
-  float: right;
-  padding-top: 152px;
-}
-
-/* Menu bar End */
-
 /* Main Start */
-
+/*ImageSlide 구간*/
 div.ImageSlide{
   margin-top: 60px;
   background-image: url("../img/ImageSlide_1.jpg");
@@ -102,58 +73,6 @@ div.ImageSlide{
 	height : 100%;
   z-index: 0;
 }
-
-#leftButton img, #rightButton img {
-  border: transparent;
-  padding-top: 2%;
-  position: absolute;
-}
-#leftButton{
-  float: left;
-}
-#rightButton{
-  float: right;
-}
-
-#table{
-  display: table;
-  width: 1000px;
-  height: 384px;
-}
-* {box-sizing:border-box}
-
-.foothyperlink{text-align: center; padding: 0 10px;}
-
-.hyperlink{
-  padding: 20px;
-  text-decoration: none;
-}
-/* unvisited link */
-a:link {
-    color: black;
-}
-
-/* visited link */
-.hyperlink:visited {
-    color: gray;
-}
-
-/* mouse over link */
-.hyperlink:hover {
-  text-decoration: underline;
-    color: hotpink;
-}
-
-/* selected link */
-.hyperlink:active {
-    color: yellow;
-}
-a#blizzard{color: blue;}
-
-a#hearthstone{color: RED;}
-
-a#inven{color: GREEN;}
-
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
@@ -161,9 +80,7 @@ a#inven{color: GREEN;}
   position: relative;
   margin: auto;
 }
-
 .mySlides{
-    /*padding-top: 70px;*/
     max-width: auto;
     height: auto;
     position: static;
@@ -178,7 +95,19 @@ a#inven{color: GREEN;}
 }
 
 /* Next & previous buttons */
-  #prev, #next {
+/*ImageSlide 버튼*/
+#leftButton img, #rightButton img {
+  border: transparent;
+  padding-top: 2%;
+  position: absolute;
+}
+#leftButton{
+  float: left;
+}
+#rightButton{
+  float: right;
+}
+#prev, #next {
   cursor: pointer;
   position: absolute;
   top: 40%;
@@ -195,7 +124,6 @@ a#inven{color: GREEN;}
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-
 /* On hover, add a black background color with a little bit see-through */
 #prev:hover, #next:hover {
   background-color: rgba(0,0,0,0.8);
@@ -213,7 +141,6 @@ div.dots{
   height: 13px;
   width: 13px;
   margin: 0 2px;
-  /*background-color: #bbb;*/
   background-color: white;
   border-radius: 50%;
   display: inline-block;
@@ -223,13 +150,7 @@ div.dots{
 .active, .dot:hover {
   background-color: black;
 }
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+/* Introduce Start*/
 div.Introduce{
   background-image: url("../img/IntroduceBackgroundImage.jpg");
   background-size: 100% 100%;
@@ -257,17 +178,19 @@ div.Introduce{
   color: #DF7401;
   text-shadow: 5px 3px #F7BE81;
 }
-#font{
+#text_1{
   font-family: fantasy;
   font-size: 40px;
   color: #FF8000;
   text-shadow: 3px 2px #F7BE81;
   margin: 0;
 }
-#color{
+#text_2{
+  font-family: cursive;
   color: blue;
 }
-#size{
+#text_3{
+  font-family: serif;
   font-size: 20px;
   margin: 0;
   }
@@ -283,6 +206,22 @@ text-align: center;
   width: 400px;
   height: 300px;
 }
+/*hyperlink*/
+.foothyperlink{text-align: center; padding: 0 10px;}
+/*hyperlink 속성*/
+.hyperlink{
+  padding: 20px;
+  text-decoration: none;
+}
+/*hyperlink에 마우스*/
+.hyperlink:hover {
+  text-decoration: underline;
+    color: hotpink;
+}
+/*3개의 hyperlink*/
+a#blizzard{color: blue;}
+a#hearthstone{color: RED;}
+a#inven{color: GREEN;}
 #chartTable{
   position: static;
   background-image: url("../img/영웅.jpg");
@@ -294,9 +233,9 @@ text-align: center;
   margin-right: auto;
   max-width: 600px;
   max-height: 650px;
-
 }
-
+/*Introduce End*/
+/*Gallery Start*/
 div.Gallery {
 	background-color : #F3E2A9;
 	outline : none;
@@ -314,8 +253,6 @@ div.Gallery {
   border-width: 7px;
   text-align: center;
   font-size: 15px;
-  /*width: 100px;
-  height: 0px;*/
   border-style: outset;
   margin-top: 30px;
   margin-left: auto;
@@ -330,9 +267,7 @@ div.Gallery {
   margin: auto;
   text-transform: uppercase;
 }
-.row > .column {
-  padding: 0px;
-}
+.row > .column {padding: 0px;}
 .row{
   width: 1030px;
   height: auto;
@@ -379,19 +314,12 @@ div.Gallery {
   background-color: black;
   z-index: 2;
 }
-
 /* Modal Content */
 div.modal-content {
   margin: auto;
   padding: 0;
   width: 800px;
   height: 100%;
-}
-img.demo {
-  width: 200px;
-  height: 300px;
-  margin: 10px;
-  opacity: 0.6;
 }
 .deckname{
   text-align: center;
@@ -405,9 +333,7 @@ img.demo {
   padding: 20px;
   z-index: 0;
 }
-
 img.slidesimg{
-  /*padding-top: 50px;*/
   width: 100%;
   height: 100%;
 }
@@ -434,31 +360,15 @@ div.modalSlides {
   transition: 0.6s ease;
   z-index: 2;
 }
-
-/* Position the "next button" to the right */
 .mprev{
   left: 20%;
 }
 .mnext {
   right: 20%;
 }
-
-/* On hover, add a black background color with a little bit see-through */
 .mprev:hover,
 .mnext:hover {
   background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-.mactive, .demo:hover {
-  opacity: 1;
 }
 .xbutton{
   position: absolute;
@@ -470,27 +380,24 @@ div.modalSlides {
   background-size:100% 100%;
   z-index: 1;
 }
+/*Gallery End*/
 
-/* Main End */
+/*Guestbook Start*/
 div.Guestbook{
   margin: auto;
   background-color : #F5D0A9;
   outline : none;
   width : 100%;
   height : 100%;
-  /*text-align: center;*/
-  /*background-image: url("../img/배경.jpg");*/
 }
 .guesttable{
   width: 100%;
   text-align: center;
-  /*height: 100%;*/
   position: static;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
-  /*border-color: #5c5c5c;*/
 }
 thead #guesttitle{
   text-shadow: 3px 2px black;
@@ -498,20 +405,11 @@ thead #guesttitle{
   margin-top: 0px;
   margin-bottom: 5px;
   color: brown;
-      text-transform: uppercase;
+  text-transform: uppercase;
 }
-#commentwriter{
-  width: 15%;
-}
-#commentcomment{
-  width: 42.5%;
-}
-#commentrecoment{
-  width: 42.5%;
-}
-.comment{
-  /*margin-left: 39%  ;*/
-}
+#commentwriter{width: 15%;}
+#commentcomment{width: 42.5%;}
+#commentrecoment{width: 42.5%;}
 .guestwriter, .guestcomment, .guestrecoment{
   margin-left: 10px;
 }
@@ -536,6 +434,11 @@ div.url img{
 }
 /* Footer Start */
 footer {
-    display: block;
+  display: block;
+  text-align: center;
+}
+#footer{
+  color: red;
+  text-decoration: underline;
 }
 /* Footer End */
